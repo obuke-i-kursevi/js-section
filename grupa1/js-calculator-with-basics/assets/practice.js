@@ -1,4 +1,4 @@
-// ! VARIJABLE
+// ! VARIJABLE (promenljive)
 
 // alert('Hello World!');
 
@@ -76,6 +76,7 @@ someNumber = (someNumber + 50) * 3 + 13;
 
 console.log(someNumber);
 
+// ! ZADACI ZA VEZBU
 // 1. 
 /*
     kreirati varijable proizvoljnog naziva u dozvoljenom camelCase formatu
@@ -84,6 +85,16 @@ console.log(someNumber);
     pokusajte da redefinisete CONST tip varijable
 */
 
+let firstVar = 55;
+const personName = 'Petar';
+let secondVar = firstVar + 20;
+
+// personName = 'Nikola'; ! NE MOZE
+
+console.log(firstVar);
+console.log(secondVar);
+console.log(personName);
+
 // 2.
 /*
     Napraviti 2 varijable uz let ili const (sami smislite koju cete iskoristiti)
@@ -91,3 +102,12 @@ console.log(someNumber);
     Druga varijabla neka sacuva opis matematicke operacije koju ste napisali
         -> '20 + 30 - 20 / 4' primer
 */
+
+let a = 20;
+let operation;
+
+const myOperation = a + 25 - 40 - a / 2 + 5 * 3;
+operationStr = 'a + 25 - 40 - a / 2 + 5 * 3';
+
+console.log(myOperation);
+console.log(operationStr);
