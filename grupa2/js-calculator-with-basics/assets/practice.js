@@ -217,7 +217,7 @@ let myNameVar = 'Marko Bojkic';
 
 printMyName();
 
-// TODO   ->    DOMACI zadaci sa drugog casa
+// TODO   ->    DOMACI zadaci sa 2. casa
 
 // 1. zadatak
 /**
@@ -245,7 +245,7 @@ currentResult = currentResult / 2;
 
 console.log(`Current result is: ${currentResult}`);
 
-alert(`Current result is: ${currentResult}`);
+// alert(`Current result is: ${currentResult}`);
 
 console.log(`User input value is: ${userInput}`);
 
@@ -262,3 +262,219 @@ function squareFunc(number) {
 }
 
 console.log(squareFunc(5));
+
+
+// ! 3. cas (01.12.2021.)
+
+// Konverzija tipova podataka
+
+console.log('----------------- 3. cas ----------------');
+
+let resVar = 55 + parseInt('455');
+
+console.log(resVar);
+
+let resVarFloat = 55 + parseFloat('432.5');
+
+console.log(resVarFloat);
+
+resVar = resVar + +'500';
+
+console.log(resVar); // 1010
+
+let resVarStr = resVar.toString() + ' is this working?';
+
+console.log(resVarStr);
+
+resVar = 5 * '50';
+
+console.log(resVar); // 250
+
+resVar = '30' - 15;
+
+console.log(resVar); // 15
+
+resVar = 100 / '2';
+
+console.log(resVar); // 50
+
+
+// kraci nacin pisanja operatora
+
+// resVar = resVar + 10;
+
+resVar += 10;
+
+console.log(resVar); // 60
+
+// resVar = resVar - 10;
+
+resVar -= 20;
+
+console.log(resVar); // 40
+
+resVar *= 5;
+
+console.log(resVar); // 200
+
+resVar /= 100;
+
+console.log(resVar); // 2
+
+    // increment i decrement operatori
+
+resVar++;
+
+console.log(resVar); // 3
+
+resVar--;
+
+console.log(resVar); // 2
+
+// alert(resVar++); // 2 
+
+console.log(resVar); // 3
+
+// alert(++resVar); // 4
+
+// ostali tipovi podataka
+/*
+    1. string
+    2. number
+    3. boolean (true ili false)
+    4. objects - dozvoljavaju da grupisete podatke.
+    5. arrays (nizovi) - liste podataka.
+    6. undefined
+    7. null
+*/
+
+// nizovi (arrays)
+
+let myArray = [];
+
+myArray = [1,2,3,4,5];
+
+myArray.push(6);
+
+myArray.push(888);
+
+console.log(myArray);
+
+console.log(`First element in myArray is ${myArray[0]}`);
+
+console.log(`Last element in myArray is ${myArray[myArray.length-1]}`);
+
+
+// objects
+// navodjenje obelezja objekta kroz key: value par
+
+const person = {
+    firstName: 'Petar',
+    lastName: 'Petrovic',
+    age: 24,
+    gender: 'male',
+    isStudent: true
+};
+
+console.log(`Person's name is ${person.firstName}`);
+
+console.log(`Person's name is ${person.firstName} and last name is ${person.lastName}`);
+
+console.log(`Person's age is ${person.age}`);
+
+console.log(`Person's gender is ${person['gender']}`);
+
+
+// undefined, null
+
+let testVariable;
+
+console.log(testVariable);
+
+let testVariable2 = null;
+
+console.log(testVariable2);
+
+// NaN --> not a number
+
+console.log(100 - 'hello world'); // NaN
+
+console.log(100 / 0);
+
+
+// typeof operator
+
+console.log(typeof(resVar)); // number
+
+console.log(typeof(500.67)); // number
+
+console.log(typeof(NaN)); // number
+
+console.log(typeof(Infinity)); // number
+
+console.log(typeof('Hello World!')); // string
+
+console.log(typeof(55 + '44')); // string
+
+console.log(typeof('hello' - 42)); // number
+
+console.log(typeof(40 + +'37')); // number
+
+console.log(typeof(undefined)); // undefined
+
+console.log(typeof(person)); // object
+
+console.log(typeof(myArray)); // object
+
+console.log(typeof(null)); // object
+
+console.log(typeof(squareFunc)); // function
+
+console.log(typeof 48); // number
+
+console.log(typeof 'my random string'); // string
+
+
+// TODO Domaci za 3. cas
+
+/*
+    1.Kreirati varijablu proizvoljnog naziva. U varijablu dodati vrednost koja se dobije tako sto saberu vrednosti 33 (tipa number) i ‘27’ (tipa string). Obezbediti konverziju (parsiranje) string-a u number kako bi se matematicka operacija uspesno izvrsila. Na kraju napraviti novu varijablu u koju cete dodati vrednost koja se dobija parsiranjem dobijenog number-a u string.
+    2. Prvu varijablu (tipa number) uvecati za 10 koristeci skraceni tip operatora. Nakon toga istu varijablu dekrementovati za jedan i ispisati konacnu vrednost na konzoli uz ispis ‘Current value is vrednost_varijable’.
+    3. Kreirati niz sa od sledecih elemenata: ‘hello’ , ‘planet’ , ‘Jupiter’. Na kraju izvrsiti konkatinaciju ovih stringova i rezultat ispisati na konzoli.
+    4. Kreirati objekat course i u njega dodati property-je: courseName (tipa string) i proizvoljnu vrednost, courseTeacher (tipa string) i proizvoljnu vrednost, duration (tipa number) i proizvoljnu vrednost i languages (tipa array) i proizvoljan niz elemenata.
+    5. Ispisati na konzoli kompletan niz elemenata (languages property) iz course objekta.
+    6. Ispisati poslednji element istog tog niza na konzoli.
+    7. Resetovati vrednost varijable iz prvog zadatka na praznu vrednost uz odgovarajuci tip podatka.
+    8. Proveriti tip podatka varijable iz prvog zadatka.
+ */
+
+let randomVar = 33 + +'27';
+
+let randomVarStr = randomVar.toString();
+
+randomVar += 10;
+
+randomVar--;
+
+console.log(`Current value is ${randomVar}`); // 69
+
+let testArray = ['Hello', 'planet', 'Jupiter'];
+
+console.log(`${testArray[0]} ${testArray[1]} ${testArray[2]}!`);
+
+const course = {
+    courseName: 'Frontend Programming',
+    courseTeacher: 'Petar Petrovic',
+    duration: 1.5,
+    languages: ['JavaScript', 'HTML5', 'CSS3']
+}
+
+console.log(course.languages);
+
+console.log(course.languages[course.languages.length-1]); // 'CSS3'
+
+randomVar = null;
+
+console.log(randomVar);
+
+console.log(typeof randomVar);
