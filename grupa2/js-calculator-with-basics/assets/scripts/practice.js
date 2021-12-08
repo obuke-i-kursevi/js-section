@@ -478,3 +478,215 @@ randomVar = null;
 console.log(randomVar);
 
 console.log(typeof randomVar);
+
+
+
+
+// ! 5. cas (08.12.2021.)
+
+console.log(`--------------- 5. cas ---------------------`);
+
+// Operatori poredjenja
+
+// dva tipa operatora poredjenja (== i ===)
+
+// == operator je operator koji poredi samo po vrednosti (double equality)
+
+console.log(10 == 10); // true
+
+console.log(`10 == 10 is: ${10 == 10}`); 
+
+console.log(`10 and 10 are not equal: ${10 != 10}`); // false
+
+console.log(`'Hello' != 'Hello' : ${'Hello' != 'Hello'}`); // false
+
+console.log(`'Hello' != 'World' : ${'Hello' != 'World'}`); // true
+
+console.log(`5 is equal to '5' ${5 == '5'}`); // true
+
+// === operator je operator koji poredi i po vrednosti i po tipu podatka (triple equality)
+
+console.log(`5 is equal to '5' with === equality: ${5 === '5'}`); // false
+
+console.log(`5 is equal to parsed '5' with === equality: ${5 === parseInt('5')}`); // 5 === 5 // true
+
+console.log(`22 is equal to '22' with === equality: ${22 !== '22'}`); // true
+
+
+// poredjenje se moze raditi i uz > , < , >= , <=
+
+
+console.log(`25 > 3 is : ${25 > 3}`); // true
+
+console.log(`-17.7 < 2 is : ${-17.7 < 2}`); // true
+
+console.log(`100 > 200 is : ${100 > 200}`); // false
+
+console.log(`50 >= 50 is : ${50 >= 50}`); // true
+
+console.log(`2 <= 2 is : ${2 <= 2}`); // true
+
+console.log(`4 > '2' is : ${4 > '2'}`); // true
+
+console.log(`15 < '3' is : ${15 < '3'}`); // false
+
+
+// Poredjenje stringova
+
+// b > a
+
+console.log(`'ab' > 'aa' is : ${'ab' > 'aa'}`); // true
+
+console.log(`'c' > 'C' is : ${'c' > 'C'}`); // true
+
+console.log(`'a' > 'B' is : ${'a' > 'B'}`); // true
+
+
+
+// ! Statementi (blokovi)
+// 1. IF
+// 2. IF - ELSE
+// 3. IF - ELSE IF - ELSE
+
+// IF blok
+
+if (5 === 10) {
+    console.log(`5 is equal to 5`);
+}
+
+if (5 === '5') {
+    console.log(`5 is equal to '5'`);
+}
+
+if (5 !== '5') {
+    console.log(`5 is not equal to '5'`);
+}
+
+// primer:
+
+const pNumber = prompt('Enter your number: ');
+
+console.log(pNumber); // '55'
+console.log(typeof pNumber); // string
+
+if (pNumber > 0) {
+    console.log(`Your number ${pNumber} is greater than 0 (positive number)!`);
+}
+
+// IF - ELSE blok
+
+if (pNumber > 0) {
+    console.log(`Your number ${pNumber} is greater than 0 (positive number)!`);
+} else {
+    console.log(`Your number ${pNumber} is less than 0 (negative number)!`);
+}
+
+// IF - ELSE IF - ELSE
+
+if (pNumber > 0) {
+    console.log(`Your number ${pNumber} is greater than 0 (positive number)!`);
+} else if (pNumber < 0) {
+    console.log(`Your number ${pNumber} is less than 0 (negative number)!`);
+} else {
+    console.log(`Your number ${pNumber} is 0!`);
+}
+
+
+// Ugnjezdeni if - else blok
+
+console.log('---------------- Ugnjezdeni IF - ELSE blok -----------------')
+
+
+if (pNumber >= 0) {
+    if (pNumber > 0) {
+        console.log(`Your number ${pNumber} is greater than 0 (positive number)!`);
+    } else {
+        console.log(`Your number ${pNumber} is 0!`); 
+    }
+} else {
+    console.log(`Your number ${pNumber} is less than 0 (negative number)!`);
+}
+
+// Poredjenje Objekata i Nizova
+
+const firstCourse = {
+    name: 'Java'
+}
+
+const secondCourse = {
+    name: 'Java'
+}
+
+console.log(`Are objects same: ${firstCourse === secondCourse}`); // false
+
+
+const courses = ['Java', 'JavaScript', 'C#'];
+
+const otherCourses = ['Java', 'JavaScript', 'C#'];
+
+
+console.log(`Are arrays the same: ${courses === otherCourses}`); // false
+
+
+// poredjenje uz vise logickih uslova
+
+console.log('------------ LOGICAL OPERATOR AND (&&), OR (||) , NOT (!) ------------');
+// true i false => false
+// false i false => false
+// true i true => true
+
+if (pNumber > 0 && pNumber === 33) { // '33' === 33 --> netacno i zato je false
+    console.log(`Your number ${pNumber} is exactly 33 and it is greater than 0!`);
+}
+
+// 1. nacin
+const parsedNumber = parseInt(pNumber);
+
+if (parsedNumber > 0 && parsedNumber === 33) {
+    console.log(`Your number ${parsedNumber} is exactly 33 and it is greater than 0!`);
+}
+
+// 2. nacin
+// if (pNumber > 0 && parseInt(pNumber) === 33) {
+//     console.log(`Your number ${pNumber} is exactly 33 and it is greater than 0!`);
+// }
+
+// TODO 5. cas domaci
+/**
+ * 1. Kreirati dve varijable tipa number sa vrednostima 30 i 50
+ * 2. Uporediti varijable koristeci == i === i rezultate poredjenja ispisati na konzoli
+ * 3. Uporediti varijable koristeci != i !== i rezultate poredjenja ispisati na konzoli
+ * 4. Rezultat poredjenja iz 2. zadatka invert-ovati uz NOT operator i ispisati na konzoli
+ * 5. Kreirati 3. varijablu sa vrednoscu '30' (tipa string)
+ * 6. Uporediti varijablu sa vrednoscu 30 (number) i '30' (string) pomocu oba tipa equality operatora (== i ===), uporediti razlike rezultata poredjenja
+ * 7. Kreirati 4. varijablu (npr. promptAnswer) cija se vrednost dobija kroz prompt prozor browser-a
+ * 8. Vrednost varijable proveriti kroz if - else if - else uslove i shodno tome ispisati status o varijabli u formatu `Value ${promptAnswer} is ________`
+ */
+
+const variable1 = 30;
+const variable2 = 50;
+
+console.log(`variable1 is equal to variable 2: ${variable1 == variable2}`); // false
+console.log(`variable1 is equal to variable 2: ${variable1 === variable2}`); // false
+
+console.log(`variable1 is not equal to variable 2: ${variable1 != variable2}`); // true
+console.log(`variable1 is not equal to variable 2: ${variable1 !== variable2}`); // true
+
+const compareOfVars = variable1 === variable2;
+
+console.log(compareOfVars); // false
+console.log(!compareOfVars); // true  // ! Revert-ovan false u true pomocu ! znaka (NOT operatora)
+
+const variable3 = '30';
+console.log(`variable3 is equal to 30: ${variable3 === 30}`); // false
+console.log(`variable3 is equal to 30: ${variable3 == 30}`); // true
+
+const promptAnswer = prompt('Enter your value:');
+
+if (promptAnswer > 0) {
+    console.log(`Value ${promptAnswer} is positive.`);
+} else if (promptAnswer < 0) {
+    console.log(`Value ${promptAnswer} is negative.`);
+} else {
+    console.log(`Value is zero.`);
+}

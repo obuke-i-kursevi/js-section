@@ -462,3 +462,204 @@ randomVar = null;
 
 console.log(typeof randomVar);
 
+
+// ! 5. Cas (08.12.2021.)
+
+console.log(`------------------ 5. cas -----------------`);
+
+let myBool;
+
+// * Operatori poredjenja (== i ===)
+
+// operator == operande poredi SAMO po vrednosti (double equality)
+
+console.log(10 == 10); // true
+
+console.log(`10 == 10 is: ${10 == 10}`); // true
+
+console.log(`50 != 50 is ${50 != 50}`); // false
+
+console.log(`Comparing equality of strings 'Hello' and 'Hello' : ${'Hello' == 'Hello'}`); // true
+
+console.log(`Comparing equality of strings 'World' and 'Winter' : ${'World' == 'Winter'}`); // false
+
+console.log(`Comparing equality of strings 'World' and 'world' : ${'World' == 'world'}`); // false
+
+console.log(`Comparing not equality of strings 'World' and 'Winter' : ${'World' != 'Winter'}`); // true
+
+console.log(`100 and '100' is equal? : ${100 == '100'}`); // true
+
+
+// operator === operande poredi i po vrednosti i po tipu vrednosti (triple (strict) equality)
+
+console.log(`100 and '100' is equal? : ${100 === '100'}`); // false
+
+// ali ovo vraca true
+console.log(`100 and '100' is equal? : ${100 === parseInt('100')}`); // true
+
+console.log(`100 and '100' is not equal? : ${100 !== parseInt('100')}`); // false
+
+
+// * poredjenje vrednosti po > , < , >= , <=
+
+console.log(`25 > 3 is : ${25 > 3}`); // true
+
+console.log(`-17.7 < 0 is: ${-17.7 < 0}`); // true
+
+console.log(`44 >= 44 is: ${44 >= 44}`); // true
+
+console.log(`2 <= 2 is: ${2 <= 2}`); // true
+
+console.log(`33 > '12' is: ${33 > '12'}`); // true
+
+console.log(`33 < '11' is: ${33 < '11'}`); // false
+
+// poredjenje stringova
+
+// b > a
+
+console.log(`'ab > 'aa' is : ${'ab' > 'aa'}`); // true
+
+console.log(`'c' > 'C' is : ${'c' > 'C'}`); // true
+
+console.log(`'a' > 'B' is: ${'a' > 'B'}`); // true
+
+
+// ! STATEMENTI (blokove) (IF , ELSE IF , ELSE)
+
+// 1. IF blok (IF statement)
+
+if (5 === 555) {
+   console.log(`5 is equal to 5.`); 
+}
+
+if (20 === '20') {
+    console.log(`20 is equal to '20'.`);
+}
+
+if (20 !== '20') {
+    console.log(`20 is not equal to '20' by triple equality.`);
+}
+
+// primer uz prompt prozor
+
+console.log(`--------------- IF blok ------------------`);
+
+const number = prompt('Enter your number: ');
+
+console.log(typeof number); // string
+
+if (number > 0) {
+    console.log(`Your number ${number} is greater than 0`);
+}
+
+console.log(`--------------- IF - ELSE blokovi ------------------`);
+
+if (number > 0) {
+    console.log(`Your number ${number} is greater than 0`);
+} else {
+    console.log(`Your number ${number} is less than 0`);
+}
+
+console.log(`----------------- IF - ELSE IF - ELSE blokovi ------------------`);
+
+if (number > 0) {
+    console.log(`Your number ${number} is greater than 0`);
+} else if (number < 0) {
+    console.log(`Your number ${number} is less than 0`);
+} else {
+    console.log(`Your number ${number} is equal to 0`);
+}
+
+
+// ! Ugnjezdeni IF - ELSE blokovi
+
+console.log(`----------------- UGNJEZDENI IF - ELSE blok ------------------`);
+
+if (number >= 0) {
+    if (number > 0) {
+        console.log(`Your number ${number} is greater than 0`);
+    } else {
+        console.log(`Your number ${number} is equal to 0`);
+    }
+} else {
+    console.log(`Your number ${number} is less than 0`);
+}
+
+
+// ! Poredjenje objekata i nizova
+
+const firstCourse = {
+    name: 'Java'
+}
+
+const secondCourse = {
+    name: 'Java'
+}
+
+console.log(`Comparing objects: ${firstCourse === secondCourse}`); // false
+
+const courses = ['Java', 'JavaScript', 'C#'];
+
+const otherCourses = ['Java', 'JavaScript', 'C#'];
+
+console.log(`Comparing arrays: ${courses === otherCourses}`); // false
+
+
+// ! Poredjenje uz vise logickih uslova
+// true i false => false
+// false i false => false
+// true i true => true
+
+console.log(`---------------- Logicki operatori -> AND (&&) , OR , NOT (!) ----------------`);
+
+// '33'
+if (number > 0 && number === 33) {
+    console.log(`Your number ${number} is exactly 33 which is greater than 0!`);
+}
+
+const parsedNumber = parseInt(number); // '33' -> 33
+
+if (parsedNumber > 0 && parsedNumber === 33) {
+    console.log(`Your number ${parsedNumber} is exactly 33 which is greater than 0!`);
+}
+
+// TODO 5. cas domaci
+/**
+ * 1. Kreirati dve varijable tipa number sa vrednostima 30 i 50
+ * 2. Uporediti varijable koristeci == i === i rezultate poredjenja ispisati na konzoli
+ * 3. Uporediti varijable koristeci != i !== i rezultate poredjenja ispisati na konzoli
+ * 4. Rezultat poredjenja iz 2. zadatka invert-ovati uz NOT operator i ispisati na konzoli
+ * 5. Kreirati 3. varijablu sa vrednoscu '30' (tipa string)
+ * 6. Uporediti varijablu sa vrednoscu 30 (number) i '30' (string) pomocu oba tipa equality operatora (== i ===), uporediti razlike rezultata poredjenja
+ * 7. Kreirati 4. varijablu (npr. promptAnswer) cija se vrednost dobija kroz prompt prozor browser-a
+ * 8. Vrednost varijable proveriti kroz if - else if - else uslove i shodno tome ispisati status o varijabli u formatu `Value ${promptAnswer} is ________`
+ */
+
+const variable1 = 30;
+const variable2 = 50;
+
+console.log(`variable1 is equal to variable 2: ${variable1 == variable2}`); // false
+console.log(`variable1 is equal to variable 2: ${variable1 === variable2}`); // false
+
+console.log(`variable1 is not equal to variable 2: ${variable1 != variable2}`); // true
+console.log(`variable1 is not equal to variable 2: ${variable1 !== variable2}`); // true
+
+const compareOfVars = variable1 === variable2;
+
+console.log(compareOfVars); // false
+console.log(!compareOfVars); // true  // ! Revert-ovan false u true pomocu ! znaka (NOT operatora)
+
+const variable3 = '30';
+console.log(`variable3 is equal to 30: ${variable3 === 30}`); // false
+console.log(`variable3 is equal to 30: ${variable3 == 30}`); // true
+
+const promptAnswer = prompt('Enter your value:');
+
+if (promptAnswer > 0) {
+    console.log(`Value ${promptAnswer} is positive.`);
+} else if (promptAnswer < 0) {
+    console.log(`Value ${promptAnswer} is negative.`);
+} else {
+    console.log(`Value is zero.`);
+}
