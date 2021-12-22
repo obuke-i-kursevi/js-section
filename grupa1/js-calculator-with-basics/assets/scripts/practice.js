@@ -1,3 +1,5 @@
+// 'use strict';
+
 // ! 1. cas
 
 console.log('-------------------- 1. cas --------------------')
@@ -1093,3 +1095,143 @@ foreignLanguages[0].teachers = [
 for(let i=0; i < foreignLanguages[0].teachers.length; i++) {
     console.log(`Teacher number ${i+1}: ${foreignLanguages[0].teachers[i].firstName} ${foreignLanguages[0].teachers[i].lastName} is teaching ${foreignLanguages[0].name}`);
 }
+
+
+
+// ! 8. cas (22.12.2021)
+
+console.log('---------------------- 8. cas (22.12.2021.) ------------------------');
+
+// ! Razlika izmedju ES5 i ES6
+
+// * VAR vs LET vs CONST
+
+// ! 1. razlika --> VAR dozvoljava re-deklarisanje varijabli, dok LET i CONST ne dozvoljavaju
+
+let city = 'Novi Sad';
+const city1 = 'Beograd';
+
+// const city1 = 'Nis';  // ! nevalidan kod
+// let city = 'New York';
+
+city = 'Pozarevac';
+
+// * vs
+
+var country = 'Serbia'; // ! losa praksa
+var country = 'Austria';
+
+console.log(`Country is ${country}`);
+
+
+// ! 2. razlika --> VAR se kreira ili GLOBALNO ili na nivou funkcije (VAR varijable su ili GLOBAL ili FUNCTION scope varijable)
+
+var check = true;
+
+if(check) {
+    var zipCode = 21000;
+}
+
+console.log(`Zip Code: ${zipCode}`);
+
+// ! 3. razlika --> Hoisting
+
+console.log(myNumb);
+var myNumb = 55;
+
+/**
+ * var myNumb;
+ * console.log(myNumb); // undefined
+ * myNumb=55;
+ * console.log(myNumb); // 55
+ */
+
+function nekaFunkcija() {
+    console.log(nekiBr);
+    var nekiBr=30;
+}
+
+
+// ! STRICT mode
+
+// 1. slucaj
+var variable6 = 'bla';
+var variable6 = 'nesto';
+
+// 2. slucaj
+variable8 = 'Jupiter'; // ! losa praksa
+
+console.log(variable8); // Jupiter
+
+
+
+// ! Stuktura JavaScript Engine-a (HEAP i STACK memorija)
+
+// HEAP memorija (dugotrajna) --> memorija kojom upravlja (u nasem slucaju browser) i u njoj se cuvaju razliciti podaci
+// STACK memorija (kratkotrajna) --> memorija koja prati korake izvrsavanja naseg programa pa samim tim i funkcije koje se izvrsavaju.
+
+
+function getPlanetName(planetName) {
+    return planetName;
+}
+
+function printPlanetName() {
+    const planet = getPlanetName('Earth');
+    console.log(`We are travelling to planet ${planet}`);
+}
+
+printPlanetName();
+
+
+
+// ! PRIMITIVNI vs REFERENTNI tipovi podataka
+
+// PRIMITIVNI tipovi --> null, undefined, numbers (23), strings ('hello'), boolean (true/false)
+
+let primitive1 = null;
+let primitive2 = undefined;
+let primitive3 = 22;
+let primitive4 = 'Good Morning!';
+let primitive5 = true;
+
+// REFERENTNI tipovi --> objekti i nizovi
+
+let referenceObj = {
+    name: 'Marko',
+    lastName: 'Markovic'
+}
+
+let referenceArr = [1,2,3,4];
+
+// referenceArr.push(5);
+
+// kopiranje primitivnih tipova podataka
+
+let primitive4Copy = primitive4;
+
+console.log(primitive4Copy);
+
+primitive4Copy = 'Good Night!';
+
+console.log(primitive4Copy);
+console.log(primitive4);
+
+
+// kopiranje referentnih tipova podataka
+
+let referenceObjCopy = referenceObj;
+
+console.log(referenceObjCopy);
+
+referenceObjCopy.name = 'Petar';
+
+console.log(referenceObjCopy);
+console.log(referenceObj);
+
+let referenceArrCopy = referenceArr;
+
+referenceArrCopy[0] = 81;
+
+console.log(referenceArrCopy);
+console.log(referenceArr);
+

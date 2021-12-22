@@ -1,3 +1,5 @@
+// 'use strict';
+
 // ! 1. cas (24.11.2021.)
 
 console.log('--------------------- 1. cas ---------------------');
@@ -1116,8 +1118,8 @@ for(let i = 0; i < 5; i++) {
 // najcesce se koristi za network greske
 
 try {
-    // console.log('Testing TRY block');
-    console.log(someNotExistingVariable);
+    console.log('Testing TRY block');
+    // console.log(someNotExistingVariable);
 } catch(error) {
     console.error(error.name + ' --> ' + error.message)
 } finally {
@@ -1157,3 +1159,148 @@ foreignLanguages[0].teachers = [
 for(let i=0; i < foreignLanguages[0].teachers.length; i++) {
     console.log(`Teacher number ${i+1}: ${foreignLanguages[0].teachers[i].firstName} ${foreignLanguages[0].teachers[i].lastName} is teaching ${foreignLanguages[0].name}`);
 }
+
+
+
+// ! 8. cas (22.12.2021.)
+
+console.log('------------------- 8. cas (22.12.2021.) -------------------');
+
+// ES5 i ES6
+
+// * VAR vs LET vs CONST
+
+// ! 1. razlika --> VAR dozvoljava re-deklarisanje varijable dok LET i CONST to ne dozvoljavaju
+
+let city = 'Novi Sad';
+city = 'Nis';
+
+console.log(`City is ${city}`);
+
+// const city1 = 'Pancevo'; // ! ne-validan kod
+// city1 = 'London';
+
+// * vs
+
+// ! VAR se moze i re-deklarisati i re-inicijalizovati
+
+var country = 'Serbia';
+var country = 'USA';
+
+console.log(`Country is ${country}`);
+
+
+// ! 2. razlika --> VAR se kreira ili GLOBALNO ili na nivou FUNKCIJE (dakle VAR varijable su ili GLOBAL scope ili FUNCTION scope varijable)
+
+var check = true;
+
+if(check) {
+    var zipCode = 21000;
+}
+
+console.log(`Zip code is: ${zipCode}`);
+
+function nekaFunkcija() {
+    console.log(zipCode);
+}
+
+// ! 3. razlika --> hoisting
+
+// console.log(myNumb1);
+// const myNumb1 = 144;
+
+
+console.log(myNumb2);
+var myNumb2 = 200;
+
+
+/**
+ * var myNumb2;
+ * console.log(myNumb2); // undefined
+ * myNumb2 = 200;
+ * console.log(myNumb2); // 200
+ */
+
+
+// ! STRICT mode
+
+// 1. slucaj
+var mojBroj = 55;
+var mojBroj = 22;
+
+// 2. slucaj
+mojBrojText = 'Igra moj broj'; // ! losa praksa
+
+console.log(mojBrojText);
+
+
+// ! Struktura JavaScript Engine-a (Heap i Stack)
+
+// Heap memorija (dugotrajna memorija) --> memorija kojom upravlja (u nasem slucaju browser) i u njoj cuva razlicite podatke
+// Stack memorija (kratkotrajna memorija) --> memorija prati korake izvrsavanja naseg programa, pa samim tim i funkcije se izvrsavaju
+
+
+function getPlanetName(planetName) {
+    return planetName;
+}
+
+function printPlanetName() {
+    const planet = getPlanetName('Earth');
+    console.log(`We are going to planet ${planet}`);
+}
+
+printPlanetName();
+
+
+// ! PRIMITIVNI vs REFERENTNI tipovi podataka
+
+// PRIMITIVNI tipovi --> null, undefined, numbers, strings, boolean
+
+
+let primitive1 = null;
+let primitive2 = undefined;
+let primitive3 = 22;
+let primitive4 = 'Good morning';
+let primitive5 = true;
+
+
+// REFERENTNI tipovi --> objekti i nizovi
+
+let referenceObj = {
+    name: 'Marko',
+    lastName: 'Markovic'
+}
+
+let referenceArr = [1,2,3,4];
+
+// referenceArr.push(5);
+
+// Vazno za kopiranje vrednosti
+
+let primitive4Copy = primitive4;
+
+console.log(primitive4Copy);
+
+primitive4Copy = 'Good Night!';
+
+console.log(primitive4Copy); // Good Night!
+console.log(primitive4); // Good Morning!
+
+
+let referenceObjCopy = referenceObj;
+
+console.log(referenceObjCopy);
+
+referenceObjCopy.name = 'Petar';
+
+console.log(referenceObjCopy);
+console.log(referenceObj);
+
+
+let referenceArrCopy = referenceArr;
+
+referenceArrCopy[0] = 77;
+
+console.log(referenceArr);
+console.log(referenceArrCopy);
+

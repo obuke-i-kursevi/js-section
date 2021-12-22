@@ -26,44 +26,84 @@ function writeToLog(typeOfOperation, previousResult, operationNumber, newResult)
     console.log(logOfOperations);
 }
 
-// sabiranje
+// ! stara verzija pre refaktorisanja
+// // sabiranje
+// function add() {
+//     const enteredNumber = getUserNumberInput(); // 55
+//     const initialResult = currentResult; // za pocetak 0
+//     // currentResult = currentResult + enteredNumber; // npr 0 + 55
+//     currentResult += enteredNumber; // 55
+//     writeOutput('+', initialResult, enteredNumber);
+//     writeToLog('ADDING', initialResult, enteredNumber, currentResult);
+// }
+
+// // oduzimanje
+// function subtract() {
+//     const enteredNumber = getUserNumberInput();
+//     const initialResult = currentResult;
+//     currentResult -= enteredNumber;
+//     writeOutput('-', initialResult, enteredNumber);
+//     writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+// }
+
+// // mnozenje
+// function multiply() {
+//     const enteredNumber = getUserNumberInput();
+//     const initialResult = currentResult;
+//     currentResult *= enteredNumber; 
+//     writeOutput('*', initialResult, enteredNumber);
+//     writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+// }
+
+// // deljenje
+// function divide() {
+//     const enteredNumber = getUserNumberInput();
+//     const initialResult = currentResult;
+//     currentResult /= enteredNumber; 
+//     writeOutput('/', initialResult, enteredNumber);
+//     writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+// }
+
+// ! nova verzija nakon refaktorisanja
+
+function mathOperation(operationType) {
+    const enteredNumber = getUserNumberInput();
+    const initialResult = currentResult;
+    let operationSign = '';
+    if(operationType === 'PLUS') {
+        currentResult += enteredNumber;
+        operationSign = '+';
+    } else if(operationType === 'SUBTRACT') {
+        currentResult -= enteredNumber;
+        operationSign = '-';
+    } else if(operationType === 'MULTIPLY') {
+        currentResult *= enteredNumber;
+        operationSign = '*';
+    } else {
+        currentResult /= enteredNumber;
+        operationSign = '/';
+    }
+    writeOutput(operationSign, initialResult, enteredNumber);
+    writeToLog(operationType, initialResult, enteredNumber, currentResult);
+}
+
 function add() {
-    const enteredNumber = getUserNumberInput(); // 55
-    const initialResult = currentResult; // za pocetak 0
-    // currentResult = currentResult + enteredNumber; // npr 0 + 55
-    currentResult += enteredNumber; // 55
-    writeOutput('+', initialResult, enteredNumber);
-    writeToLog('ADDING', initialResult, enteredNumber, currentResult);
+    mathOperation('PLUS');
 }
 
-// oduzimanje
 function subtract() {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult -= enteredNumber;
-    writeOutput('-', initialResult, enteredNumber);
-    writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+    mathOperation('SUBTRACT');
 }
 
-// mnozenje
 function multiply() {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult *= enteredNumber; 
-    writeOutput('*', initialResult, enteredNumber);
-    writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+    mathOperation('MULTIPLY');
 }
 
-// deljenje
 function divide() {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult /= enteredNumber; 
-    writeOutput('/', initialResult, enteredNumber);
-    writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+    mathOperation('DIVIDE');
 }
 
-// mnozenje
+// clear
 function clear() {
     currentResult = 0;
     userInput.value = 0;
