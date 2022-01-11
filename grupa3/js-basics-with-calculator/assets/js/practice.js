@@ -138,14 +138,132 @@ console.log(number1); // 102
 */
 
 
-let result = 4;
+let result = 6;
 
 let description;
 
-result = (result / 2) + (10 - 4) * 3;
+result = (result / 2) + (10 - result) * 3;
 
 console.log(`Rezultat je ${result}`);
 
 description = `(4 / 2) + (10 - 4) * 3`;
 
 console.log(description);
+
+
+
+// ! 2. cas (11.01.2022.)
+
+console.log(`---------------- 2. cas (11.01.2022.) -------------------`);
+
+let dynamicDescription = '(' + result + ' / 2) + (10 - ' + result + ') * 3';
+
+console.log(dynamicDescription);
+
+
+// TODO Zadatak za vezbu:
+
+let testDesc = 'result + (result * 3) - (10 + result)';
+
+let dynamicTestDesc = result + ' + (' + result + ' * 3) - (10 + ' + result + ')';
+
+console.log(dynamicTestDesc);
+
+let anotherDesc = 'result * 5 - 150 / result + result';
+
+let dynamicAnotherDesc = result + " * 5 - 150 / " + result + " + " + result;
+
+console.log(dynamicAnotherDesc);
+
+
+// ! Moja preporuka za koriscenjem --> Template Literals
+
+let someDesc = 'result + (result * 3) - (10 + result)';
+
+let dynamicSomeDesc = `${result} + (${result} * 3) - (10 + ${result})`;
+
+console.log(dynamicSomeDesc);
+
+let someDesc1 = 'result / result + (10*result) - 5-result';
+
+let dynamicSomeDesc1 = `${result} / ${result} + (10 * ${result}) - 5 - ${result}`;
+
+console.log(dynamicSomeDesc1);
+
+
+let goToNewLine = `Some string going \nto new line.`;
+
+console.log(goToNewLine);
+
+
+/**
+ * 1. Kreirati dve varijable. Jedna neka bude tipa number i neka se zove userInput (na koju god vrednost je postavite) i 
+ *    druga neka se naziva resultNew i nemojte je postaviti ni na kakvu vrednost.
+   2. Postavite resultNew varijablu na vrednost userInput plus neki broj (npr 20).
+   3. U naredne 3 linije koda, varijablu resultNew promenite u svakoj narednoj liniji koda operacijama oduzimanja, 
+      mnozenja i deljenja nad tom resultNew varijablom i svaki put ispisati vrednost varijable na konzoli u formatu koji 
+      zelite s tim da pre toga stoji String `Current result is: `
+   4. Na kraju varijablu resultNew ispisati u okviru alert prozora, a userInput varijablu ispisati samo na konzoli.
+*/
+
+
+let userInput = 10;
+let resultNew;
+
+resultNew = userInput + 20;
+
+resultNew = resultNew - 10;
+
+console.log(`Current result is ${resultNew}`);
+
+resultNew = resultNew * 5;
+
+console.log(`Current result is ${resultNew}`);
+
+resultNew = resultNew / 2;
+
+console.log(`Current result is ${resultNew}`);
+
+alert(resultNew);
+
+console.log(userInput);
+
+
+
+// ! FUNKCIJE
+
+// 0..n parametara
+function sayHi(name) {
+  alert(`Welcome ${name}`);
+}
+
+sayHi('Petar Petrovic');
+
+// sayHi('Marko Markovic');
+
+// sayHi('Milan Milanovic');
+
+
+function add(number1, number2) {
+  const result = number1 + number2;
+  return `Result of adding two numbers is ${result}`;
+}
+
+console.log(add(50,60));
+
+console.log(add(90,70));
+
+console.log(add(100,50));
+
+
+function square(number) {
+  const result = number**2;
+  return `Result is ${result}`;
+}
+
+console.log(square(2)); // 4
+
+console.log(square(5)); // 25
+
+
+
