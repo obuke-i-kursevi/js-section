@@ -267,3 +267,249 @@ console.log(square(5)); // 25
 
 
 
+
+// ! 3. cas (13.01.2022.)
+
+console.log('---------------------- 3. cas (13.01.2022.) ----------------------');
+
+let resVar = 55 + '455';
+
+// Numbers su:
+// celobrojni broj : 55 (INTEGER)
+// decimalni broj: 55.45 (FLOAT)
+
+console.log(`Result without parsing (converting) is ${resVar}`); // '55455'
+
+resVar = 55 + parseInt('455');
+
+console.log(`Result with parsing string to number is ${resVar}`); // 510
+
+let resVarFloat = 22 + '66.5';
+
+console.log(resVarFloat); // '2266.5'
+
+resVarFloat = 22 + parseFloat('66.5');
+
+console.log(resVarFloat); // 88.5
+
+
+let resVar2 = 100 + +'33';
+
+console.log(resVar2); // 133
+
+
+let resVar3 = resVar2.toString() + ' neki tekst!';
+
+console.log(resVar3); // '133 neki tekst!'
+
+
+// * Implicitna konverzija tipova podataka
+
+let resVar4 = 3 * '3';
+
+console.log(resVar4); // 9 (broj)
+
+resVar4 = '15' - 5;
+
+console.log(resVar4); // 10 (broj)
+
+resVar4 = '100' / 50;
+
+console.log(resVar4); // 2 (broj)
+
+
+
+// ! Kraci nacin pisanja operatora
+
+resVar4 = resVar4 + 50;
+
+console.log(resVar4); // 52
+
+resVar4 += 38;
+
+console.log(resVar4); // 90
+
+resVar4 /= 2;
+
+console.log(resVar4); // 45
+
+resVar4 -= 15;
+
+console.log(resVar4); // 30
+
+resVar4 *= 3;
+
+console.log(resVar4); // 90
+
+
+// ! Increment i Decrement operatori
+
+resVar4++;
+
+console.log(resVar4); // 91
+
+resVar4--;
+
+console.log(resVar4); // 90
+
+// alert(++resVar4);
+
+
+
+// ! Tipovi podataka u JS-u:
+
+// 1. String
+// 2. Number
+// 3. boolean (true ili false) 
+// 4. objekti - za grupisanje podataka.
+// 5. nizovi - liste podataka.
+// 6. symbol
+// 7. undefined
+// 8. null
+
+
+// ! NIZOVI
+
+const myArray = []; // kreiranje praznog niza
+
+// myArray = [1,2,3,4,5]; // kreiranje punog niza (niza sa nekim elementinma)
+
+myArray.push(1);
+myArray.push(4);
+myArray.push(10);
+
+console.log(myArray);
+
+console.log(myArray[1]); // 4
+
+console.log(myArray[10]); // undefined
+
+console.log(myArray[myArray.length-1]); // pristupanje poslednjem elementu iz niza
+
+
+// ! OBJEKTI
+
+const person = {
+  firstName: 'Marko',
+  lastName: 'Markovic',
+  age: 30,
+  gender: 'male',
+  isStudent: true
+};
+
+
+console.log(person);
+
+console.log(person.firstName);
+
+console.log(`Welcome ${person.firstName} with last name ${person.lastName}`);
+
+console.log(`Person's age : ${person['age']}`); // Person's age : 30
+
+
+
+// ! Undefined -> podrazumeva default vrednost NEINICIJALIZOVANIH varijabli
+
+let someVar;
+
+console.log(someVar); // undefined
+
+// ! null -> najcesce se koristi za resetovanje varijable
+
+let someVar1 = {
+  email: 'email@gmail.com',
+  password: '12345'
+};
+
+someVar1 = null; // resetovanje varijable someVar1
+
+console.log(someVar1); // null
+
+
+
+// ! NaN (not a number) , ovo je tip number-a
+
+console.log(10 - 'hello world'); // NaN
+
+
+
+// ! TypeOf operator
+
+
+console.log(typeof(50)); // number
+// ili
+console.log(typeof 50); // number
+
+console.log(typeof('Hello World')); // string
+
+console.log(typeof(40.23)); // number
+
+console.log(typeof(NaN)); // number
+
+console.log(typeof(true)); // boolean
+
+console.log(typeof(undefined)); // undefined
+
+console.log(typeof(null)); // object
+
+console.log(typeof({name: 'Petar Petrovic'})); // object
+
+console.log(typeof(person)); // object
+
+console.log(typeof(myArray)); // object
+
+
+
+/**
+ * TODO Domaci 3. cas (13.01.2022.)
+ * 
+  1. Kreirati varijablu proizvoljnog naziva. U varijablu dodati vrednost koja se dobije tako sto saberu vrednosti 
+     33 (tipa number) i ‘27’ (tipa string). Obezbediti konverziju (parsiranje) string-a u number kako bi
+     se matematicka operacija uspesno izvrsila. Na kraju napraviti novu varijablu u koju cete dodati vrednost 
+     koja se dobija parsiranjem dobijenog number-a u string.
+  2. Prvu varijablu (tipa number) uvecati za 10 koristeci skraceni tip operatora. Nakon toga istu varijablu 
+     dekrementovati za jedan i ispisati konacnu vrednost na konzoli uz ispis ‘Current value is vrednost_varijable’.
+  3. Kreirati niz sa od sledecih elemenata: ‘hello’ , ‘planet’ , ‘Jupiter’. Na kraju izvrsiti konkatinaciju 
+     ovih stringova i rezultat ispisati na konzoli.
+  4. Kreirati objekat course i u njega dodati property-je: courseName (tipa string) i proizvoljnu vrednost, 
+     courseTeacher (tipa string) i proizvoljnu vrednost, duration (tipa number) i proizvoljnu vrednost i 
+     languages (tipa array) i proizvoljan niz elemenata.
+  5. Ispisati na konzoli kompletan niz elemenata (languages property) iz course objekta.
+  6. Ispisati poslednji element istog tog niza na konzoli.
+  7. Resetovati vrednost varijable iz prvog zadatka na praznu vrednost uz odgovarajuci tip podatka.
+  8. Proveriti tip podatka varijable iz prvog zadatka.
+ * 
+*/
+
+
+let randomVar = 33 + +'27';
+
+let randomVarStr = randomVar.toString();
+
+randomVar += 10;
+
+randomVar--;
+
+console.log(`Current value is ${randomVar}`); // 69
+
+let testArray = ['Hello', 'planet', 'Jupiter'];
+
+console.log(`${testArray[0]} ${testArray[1]} ${testArray[2]}!`); // Hello planet Jupiter
+
+const course = {
+    courseName: 'Frontend Programming',
+    courseTeacher: 'Petar Petrovic',
+    duration: 1.5,
+    languages: ['JavaScript', 'HTML5', 'CSS3']
+}
+
+console.log(course.languages);
+
+// course['languages'];
+
+console.log(course.languages[course.languages.length-1]); // 'CSS3'
+
+randomVar = null;
+
+console.log(typeof randomVar);
+
