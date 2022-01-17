@@ -481,7 +481,8 @@ console.log(newTransactionsArray);
 /**
  *  1. Kreirati niz sa artiklima u radnji (svaki artikl ima svoj naziv i svoju cenu)
  *  2. Dodati u niz artikala jos 2 elementa, jedan na pocetak, a drugi na kraj niza 
- *  3. Na trece mesto u nizu dodati novi artikl, ali tako da se trenutno treci element NE OBRISE, vec samo pomeri za jedno mesto udesno
+ *  3. Na trece mesto u nizu dodati novi artikl, ali tako da se trenutno treci element NE OBRISE, vec samo pomeri za 
+ *     jedno mesto udesno
  *  4. Obrisati poslednji element iz niza
  *  5. Kreirati novi niz na osnovu samo poslednja tri elementa iz artikala
  *  6. Iz tog novog niza, odvojiti samo prva dva elementa u novi niz
@@ -490,8 +491,10 @@ console.log(newTransactionsArray);
  *  9. Pronaci indeks artikla koji ima cenu 5
  *  10. Nad svakim artiklom dodeliti novi property 'formatedPrice' koji ce sadrzati prefiks '$' i cenu tog artikla
  *  11. Kreirati novi niz koji ce sadrzati sve cene svakog artikla.
- *  12. Proveriti da li se u novom nizu svih cena nalazi ijedna cena koja iznosi 7 i ispisati odgovor u formatu 'cena 7 postoji' ili 'cena 7 ne postoji'
- *  13. Za svaku cenu obracunati dodatan PDV (npr. od 8 %) i dodati ga na postojecu cenu i za svaku cenu dodati njen redni broj u nizu
+ *  12. Proveriti da li se u novom nizu svih cena nalazi ijedna cena koja iznosi 7 i ispisati odgovor u formatu 'cena 7 postoji'
+ *      ili 'cena 7 ne postoji'
+ *  13. Za svaku cenu obracunati dodatan PDV (npr. od 8 %) i dodati ga na postojecu cenu i za svaku cenu dodati 
+ *      njen redni broj u nizu
 */
 
 
@@ -540,3 +543,374 @@ allPrices.forEach((price, idx) => {
 })
 
 console.log(pricesWithPDV);
+
+
+
+
+// ! 13. CAS (17.01.2022.)
+
+console.log('-------------------- 13. cas (17.01.2022.) ---------------------');
+
+
+// ! MAP - funkcija koja kao svoj argument prihvata funkciju (CALLBACK) koja transformise svaki element niza i 
+// ! vraca NOVI niz (transformisani niz)
+
+
+let letters = ['a','b','c','d','e'];
+
+// toUpperCase() funkcija nad svaki slovom
+
+
+// letters.forEach(letter => letter.toUpperCase());
+
+let bigLetters = letters.map(letter => letter.toUpperCase());
+
+console.log(bigLetters);
+
+
+let normalPrices = [30.5, 20, 15, 7.4, 10];
+
+let pdv = 0.08;
+
+let newPricesWithPDV = normalPrices.map(price => price * (1 + pdv));
+
+console.log('Prices with PDV', newPricesWithPDV);
+
+
+console.log('Articles', articles);
+
+const articlesNames = articles.map(article => article.name);
+
+console.log('Article names', articlesNames);
+
+
+
+
+// ! SORT - funkcija koja sortira elemente i MUTIRA (MENJA) niz nad kojim pozivamo funkciju
+
+let brojevi = [10,23,11,5,123,55,0];
+
+// console.log(brojevi.sort()); // ! ovo ne radi posao koji smo ocekivali (sortira brojeve kao string-ove)
+
+console.log(articlesNames.sort());
+
+// 1. duzi nacin sortiranja
+// brojevi.sort((a,b) => {
+//     if(a>b) {
+//         return 1;
+//     } else if(a===b) {
+//         return 0;
+//     } else {
+//         return -1;
+//     }
+// });
+
+// 2. kraci nacin (SORTIRANJE U RASTUCEM REDOSLEDU)
+brojevi.sort((a,b) => {
+    return a-b;
+});
+
+
+console.log('Ascending sorted brojevi:', brojevi);
+
+// 2. kraci nacin (SORTIRANJE U OPADAJUCEM REDOSLEDU)
+brojevi.sort((a,b) => {
+    return b-a;
+});
+
+console.log('Descending sorted brojevi:', brojevi);
+
+
+// vracanje brojeva u pocetno rastuce stanje
+brojevi.sort((a,b) => {
+    return a-b;
+});
+
+
+console.log('Ascending sorted brojevi:', brojevi);
+
+
+// ! REVERSE funkcija -> 2. nacin za opadajuci sort
+
+console.log('Reversed brojevi', brojevi.reverse()); // (7) [123, 55, 23, 11, 10, 5, 0]
+
+
+
+
+// ! FILTER -> funkcija koja filtrira niz vracajuci samo elemente koji zadovoljavaju odredjeni uslov
+
+// const greaterThan10 = brojevi.filter(number => number > 10);
+
+const greaterThan10 = brojevi.filter((number) => {
+    return number > 10;
+});
+
+console.log('Brojevi veci od 10', greaterThan10);
+
+
+
+
+// zbir svih brojeva iz niza BROJEVI
+
+let sum = 0;
+
+for(let num of brojevi) {
+    sum += num;
+}
+
+console.log(`Zbir svih brojeva je = ${sum}`); // 227
+
+
+
+// ! REDUCE -> funkcija koja vrednosti niza redukuje na jednu vrednost
+
+let reduceRes = brojevi.reduce((prevValue, currValue) => {
+    return prevValue + currValue;
+}, 0);
+
+console.log(`Reduce result is ${reduceRes}`); // 227
+
+
+
+
+// ! FLAT -> funkcija koja na povrsinu niza PRVOG reda izvlaci elemente njegovih podnizova
+
+const arrWithNestedArr = [[4,5,1], ['Java', 10, 'JavaScript'], 7, 11];
+
+const flatArr1 = arrWithNestedArr.flat();
+
+console.log('First flat array', flatArr1);
+
+
+const arrWithNestedArrNew = [[4,5,1,[100,[9,8,7],200,'JS']], [40,50,60], 'Hello World', 11];
+
+const flatArr2 = arrWithNestedArrNew.flat(3);
+
+console.log('Second flat array', flatArr2);
+
+
+
+
+// ! CHAINING funkcija
+
+// * DUZI NACIN
+// const veciOd10 = brojevi.filter(broj => broj > 10);
+
+// const duploVeci = veciOd10.map(broj => broj * 2);
+
+// const finalniRes = duploVeci.reduce((prevVal, currVal) => prevVal + currVal);
+
+// * KRACI NACIN UZ CHAINING
+const chainingResult = brojevi
+    .filter(broj => broj > 10)
+    .map(broj => broj * 2)
+    .reduce((prevVal, currVal) => prevVal + currVal);
+
+
+console.log(`Result of chaining: ${chainingResult}`); // 424
+
+
+
+const accounts = [
+    {
+        owner: 'Marko Markovic',
+        city: 'Novi Sad',
+        age: 55,
+        transactions: [50,30,-50,20,-15]
+    },
+    { 
+        owner: 'Sara Saric',
+        city: 'Novi Sad',
+        age: 35,
+        transactions: [100,50,-20,30,-25]
+    },
+    {
+        owner: 'Petar Petrovic',
+        city: 'Beograd',
+        age: 75,
+        transactions: [550,320,-500,120,-15]
+    }
+]
+
+// * DUZI NACIN
+
+// const saldo = accounts
+//     .map(account => account.transactions)
+//     .flat()
+//     .reduce((prevVal, currVal) => prevVal + currVal);
+
+
+// * KRACI NACIN UZ FUNKCIJU FlatMap()
+// ! NAPOMENA: FlatMap() ide do dubine 1
+
+const saldo = accounts
+    .flatMap(account => account.transactions) 
+    .reduce((prevVal, currVal) => prevVal + currVal);
+
+console.log(`Bank saldo is ${saldo} $`); // 645
+
+
+
+// ! SPLIT funkcija
+
+let nesto = 'Welcome';
+
+console.log(nesto.split(''));
+
+let weatherData = 'city: Novi Sad;weather: cloudy;degrees: 20 C';
+
+
+const customizedWeatherData = weatherData.split(';');
+
+console.log(customizedWeatherData);
+
+
+
+// ! JOIN funkcija
+
+const personalData = ['name: Marko', 'lastName: Markovic', 'age: 44'];
+
+const customizedPersonalData = personalData.join(';');
+
+console.log(customizedPersonalData);
+
+
+
+/** 
+ *  TODO 13. cas (17.01.2022.)
+ * 
+ *  1. Kreirati prodavnicu za odecu (5 item-a dodati)
+ *  2. Svaki odevni predmet ima svoj ID, naziv, cenu, moguce boje i moguce velicine
+ *  3. Dodati u korpu 3 item-a po izboru na osnovu njihovog ID-a, pri cemu se ID-evi artikla 
+ *     unose kroz jedan ISTI prompt prozor, pri cemu se ID-evi odvajaju zarezom (1,3,5 npr.)
+ *  4. Pronaci proizvode sa unesenim ID-evima i ispisati ih na konzoli svaki POJEDINACNO uz poruku 
+ *     'Chosen products are: ' nakon cega sledi lista odabranih proizvoda.
+ *  5. Poslednji proizvod iz korpe ukloniti (iz niza) i dodati neki drugi proizvod ciji se ID takodje unosi 
+ *     kroz prompt prozor.
+ *  6. Izracunati ukupnu cenu svih proizvoda iz korpe i ispisati je uz poruku `Total price is CENA $`
+ *  7. Na ukupnu cenu obracunati popust od 10 % i sniziti je za tu vrednost i ispisati je na konzoli uz poruku:
+ *     `Total Price with discount is CENA $`;
+ *  8. Proizvode iz korpe sortirati opadajuce po ceni
+ *  9. Ispisati sve moguce velicine proizvoda iz korpe (kao deo jednog niza)
+ *  10. Iz niza dobijenih velicina otkloniti duplikate (dakle jedna velicina se sme pojaviti samo jednom u istom tom nizu)
+ */
+
+
+// 1. i 2.
+const clothes = [
+    {
+        id: 1,
+        name: 'T-shirt',
+        price: 20.00,
+        colors: ['black','white','gray'],
+        sizes: ['M', 'L', 'XL']
+    },
+    {
+        id: 2,
+        name: 'Pants',
+        price: 40.00,
+        colors: ['gray','white','black'],
+        sizes: ['S', 'M', 'L']
+    },
+    {
+        id: 3,
+        name: 'Hat',
+        price: 12.50,
+        colors: ['red','blue'],
+        sizes: ['S', 'M', 'L']
+    },
+    {
+        id: 4,
+        name: 'Socks',
+        price: 7.50,
+        colors: ['black','white','gray'],
+        sizes: ['S', 'M', 'L', 'XL']
+    },
+    {
+        id: 5,
+        name: 'Hoodie',
+        price: 25,
+        colors: ['black','green','purple','yellow'],
+        sizes: ['S', 'M', 'L', 'XL', 'XXL']
+    }
+];
+
+// 3. 
+const basket = [];
+const enteredIDs = prompt('Enter up to 3 clothes items:');
+
+
+// 4.
+const chosenIDs = enteredIDs
+    .split(',')
+    .map(id => parseInt(id));
+
+
+for(let id of chosenIDs) {
+    for(let item of clothes) {
+        if(item.id === id) {
+            basket.push(item);
+        }
+    }
+}
+
+console.log(`Chosen products are:`);
+basket.forEach(item => console.log(item));
+
+
+// 5.
+basket.splice(-1,1);
+
+let newProductID = prompt('Enter another product ID:');
+
+let newProduct = clothes.find(product => product.id === +newProductID);
+
+basket.push(newProduct);
+
+console.log(basket);
+
+
+// 6.
+let totalPrice = basket
+    .map(item => item.price)
+    .reduce((prevVal, currVal) => prevVal + currVal);
+
+console.log(`Total price of basket is ${totalPrice} $`);
+
+let discount = 0.1;
+
+totalPrice -= totalPrice * discount;
+
+console.log(`Total price with discount is ${totalPrice} $`);
+
+
+// 7.
+basket.sort((a,b) => {
+    return b.price - a.price;
+});
+
+console.log(basket);
+
+
+// 8.
+// let sizesArray = [...basket.flatMap(item => item.sizes)]; // ! ovo cemo uciti sledeci cas (14. cas) tzv Spread operator
+
+let sizesArray = basket
+    .slice()
+    .flatMap(item => item.sizes);
+
+console.log(sizesArray);
+
+// 9.
+let filteredArray = sizesArray.filter((size, idx, sizesArray) => {
+    return sizesArray.indexOf(size) === idx;
+});
+
+console.log(filteredArray);
+
+
+// ! 14. cas (19.01.2022.)
+
+console.log('-------------------- 14. cas (19.01.2022.) -------------------');
+
+// ! SPREAD operator
