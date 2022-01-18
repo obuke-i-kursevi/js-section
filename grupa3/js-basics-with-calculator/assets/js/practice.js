@@ -496,6 +496,8 @@ let testArray = ['Hello', 'planet', 'Jupiter'];
 
 console.log(`${testArray[0]} ${testArray[1]} ${testArray[2]}!`); // Hello planet Jupiter
 
+console.log(testArray[0] + ' ' + testArray[1] + ' ' + testArray[2]);
+
 const course = {
     courseName: 'Frontend Programming',
     courseTeacher: 'Petar Petrovic',
@@ -512,4 +514,3 @@ console.log(course.languages[course.languages.length-1]); // 'CSS3'
 randomVar = null;
 
 console.log(typeof randomVar);
-
