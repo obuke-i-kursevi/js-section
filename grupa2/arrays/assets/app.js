@@ -916,8 +916,487 @@ let filteredArray = sizesArray.filter((size, idx, sizesArray) => {
 console.log(filteredArray);
 
 
+
+
+
 // ! 14. cas (19.01.2022.)
 
 console.log('------------------ 14. cas (19.01.2022.) --------------------');
 
-// ! SPREAD operatora
+
+// ! SOME funkcija -> vraca true ako BAR JEDAN element iz niza zadovljava neki logicki uslov
+
+console.log('Brojevi',brojevi);
+
+const isBiggerThan10 = (element) => element > 10;
+
+console.log('Array BROJEVI contains at least one number bigger than 10: ', brojevi.some(isBiggerThan10));
+
+
+// * ili na primer proveriti da li je bar ijedan broj iz niza BROJEVI paran
+
+// REMAINDER operator -> % (proverava ostatak pri deljenju)
+
+const findEvenNum = (element) => element % 2 === 0;
+
+console.log('Array BROJEVI contains at least one element that is even: ', brojevi.some(findEvenNum));
+
+
+
+
+// ! EVERY funkcija -> vraca true ako SVAKI element iz niza zadovljava neki logicki uslov
+
+// * npr da li je SVAKI broj iz niza BROJEVI veci od 10
+
+console.log('Array BROJEVI contains EACH number greater than 10:', brojevi.every(isBiggerThan10));
+
+
+
+
+// ! FILL funkcija -> f-ja koja menja sve elemente u odredjenu vrednost. Pri tome, moze se zadati i pocetak i kraj dokle se menjaju vrednosti.
+
+const randomNumbers = [100,200,300,400,500,600];
+
+console.log('Fill funkcija', randomNumbers.fill(0,2));
+
+
+console.log('Fill funkcija sa X', randomNumbers.fill('x'));
+
+
+
+
+
+// ! SPREAD operator -> operator koji izvlaci iz niza pojedinacne elemente i vraca listu tih elemenata
+
+const addNums = (x,y,z,j) => {
+    return x+y+z+j;
+}
+
+let fourNums = [4,10,12,14];
+
+let addNumsRes = addNums(...fourNums);
+
+console.log(`Spread operator result: ${addNumsRes}`); // 40
+
+
+// * za kopiranje niza:
+
+// * primer kopiranja niza koji sadrzi elemente primitivnih tipova
+
+let fourNumsCopy = [...fourNums];
+
+console.log('Four nums original', fourNums);
+console.log('Four nums copy', fourNumsCopy);
+
+fourNumsCopy.push(99);
+
+console.log('Four nums original', fourNums);
+console.log('Four nums copy', fourNumsCopy);
+
+
+// * primer kopiranja niza koji sadrzi elemente referentnog tipa
+
+let employees = [
+    {
+        id: 1,
+        name: 'Pera Peric',
+        degree: 'master'
+    },
+    {
+        id: 2,
+        name: 'Sara Saric',
+        degree: 'bachelor'
+    }
+];
+
+let employeesCopy = [...employees];
+
+console.log('Employees original', employees);
+console.log('Employees copy', employeesCopy);
+
+employees.push({
+    id: 3,
+    name: 'Laza Lazic',
+    degree: 'master'
+});
+
+console.log('Employees original', employees);
+console.log('Employees copy', employeesCopy);
+
+employees[0].degree = 'doctoral';
+
+console.log('Employees original', employees);
+console.log('Employees copy', employeesCopy);
+
+
+let employeesCopyNew = [
+    ...employees.map(employee => ({
+        id: employee.id,
+        name: employee.name,
+        degree: employee.degree
+    }))
+];
+
+employees[0].degree = 'post-master';
+
+console.log('Employees original', employees);
+console.log('Employees copy new', employeesCopyNew);
+
+
+// * na primer, hocemo da u nizu brojeva BROJEVI pronadjemo najveci broj
+
+let maxValue = Math.max(brojevi);
+
+console.log(`Maximum value is ${maxValue}`); // NaN
+
+let maxValueNew = Math.max(...brojevi);
+
+console.log(`Maximum value is ${maxValueNew}`); // 123
+
+
+
+
+// ! Array desctructing - koncept kojim se niz destrukturira u varijable
+
+let singleStudent = ['Nemanja', 'Nemanjic', 33, 'doctoral', true];
+
+const [firstName, lastName, age, degree, isStudent] = singleStudent;
+
+
+console.log(`Person's name is ${firstName} ${lastName} and is a student: ${isStudent}. Is old ${age} and has degree ${degree}`);
+
+
+const [fName, lName, ...additionalData] = singleStudent;
+
+console.log(`${fName} ${lName}`);
+
+console.log(additionalData);
+
+
+
+
+// TODO ZADACI ZA VEZBU 
+
+// ! (KOMBINACIJE NIZOVA i FUNKCIJA)
+
+/**
+ * 1. Napisati funkciju koja klonira niz koji joj je prosledjen kao argument
+ * 2. Napisati funkciju koja vraca poslednji element iz niza koji joj je prosledjen kao argument
+ * 3. Napisati funkciju koja spaja sve elemente jednog niza u String
+ * 4. Napisati funkciju koja prihvata niz brojeva kao argument i za svaki od njih proverava da li je paran ili neparan.
+ *    Ukoliko je paran vraca `$BROJ is even`, u suprotnom `$BROJ is odd.` Ako je nula, onda `Number is zero!`
+ * 5. Napisati funkciju koja ce niz koji prihvati kao argument da sortira u rastucem redosledu (testirati na nizu Brojeva i nizu Stringova)
+ * 6. Napisati funkciju koja ispisuje elemente pod nizova. Npr ako su pod-nizovi [[1,2,3] , [4,5,6]] onda je rezultat funkcije:
+ *    `Array number $REDNI_BROJ_NIZA contains these elements: $ELEMENTI`
+ * 7. Napisati funkciju koja sabira ukupan PROIZVOD i ukupan ZBIR svih elemenata iz niza prosledjenog kao argument. Takodje, dodati
+ *    validaciju koja provera da li je SVAKI element iz prosledjenog niza broj. Ako bar jedan element nije broj, ispisati `Each element in
+ *    array has to be a number.`
+ * 8. Pozvati funkciju prompt() 3 puta i svakom prilikom uneti nesto u input polje. Unetu vrednost dodati u isti niz i na kraju ga ispisati.
+ * 9. Svaku vrednost iz prethodnog niza ukoliko je u pitanju broj zapisan u String formatu (npr '55') pretvoriti u broj 55 i pri tome ga zameniti
+ *    u nizu. Dakle, ako je '55' (string), pretvori se u 55 (broj) i potom se umesto '55' (stringa) sada u nizu treba naci 55 (broj)
+ * 10. Napisati funkciju koja ce za niz godina prosledjen kao argument utvrditi koja je od godina prestupna. Ako je prestupna, ispisati 
+ *     `$GODINA is a leap year!`
+ *     ! NAPOMENA: Godina je prestupna ako je deljiva za 400. Takodje, godina je prestupna ako je deljiva sa 4 i nedeljiva sa 100.
+ * 11. Napisati funkciju koja iz niza prihvacenog kao argument vraca duplikate
+ * 12. Napisati funkciju koja ce sabrati sve brojeve iz unije 3 niza
+ * 13. Napisati funkciju koja ce vrednosti 0, false, undefined, null otkloniti iz niza prosledjenog kao argument
+ * 14. Napisati funkciju koja ce ovaj niz sa knjigama sortirati rastuce po naslovu:
+ *      [
+ *          {
+ *              id: 1,
+ *              author: 'Steven King',
+ *              title: 'Misery'
+ *          },
+ *          {
+ *              id: 2,
+ *              author: 'Steven King',
+ *              title: 'The Shining'
+ *          },
+ *          {
+ *              id: 3,
+ *              author: 'Steven King',
+ *              title: 'Doctor Sleep'
+ *          }
+ *      ]
+ *  15. Napisati funkciju koja ce iz niza prosledjenog kao argument vratiti najveci broj 
+ *  16. Kreirati funkciju koja vraca niz koji inicijalno na svakoj poziciji ima broj 0 (dakle npr -> [0,0,0,0,0]); Parametar neka bude broj
+ *      koji odredjuje duzinu niza (npr ako se funkciji prosledi broj 5, onda se kreira niz od 5 elemenata (duzine 5)).
+ *  17. Napisati funkciju koja reverse-uje niz prosledjen kao argument. Npr [1,2,3] => [3,2,1]. Pokusati prvo BEZ reverse() funkcije.
+ *  18. Napisati funkciju koja vraca TRUE ako su dva niza identicna (ako su im svi elementi medjusobno isti)
+ *  19. Napisati funkciju koja vraca broj kopija u nizu. 
+ *      Ako ima duplikata ispisati: There are $BROJ_DUPLIKATA duplicates in this array
+ *      Ako nema duplikata ispisati: There are no duplicates in this array
+ *  20. Napisati funkciju koja ce za prosledjeni objekat (ucenika) sracunati prosek njegovih zakljucenih ocena na kraju godine.
+ *      Npr ako su predmeti sledeci: tehnicko: [3,4,5,5,4]
+ *                                   matematika: [5,2,3,5,4]
+ *                                   srpski jezik: [4,4,3,5,4]
+ *      Onda na osnovu ova 3 predmeta izvuci UKUPNU prosecnu ocenu i tu ocenu dodeliti tom uceniku kao prosek za kraj godine:
+ *      Npr: 'Pera Peric has an average grade: $PROSEK'
+ *      ! HINT: proveriti da li se moze FOR IN loop iskoristiti
+*/
+
+
+
+// 1.
+const cloneFunc = (array) => {
+    let arrayCopy = [...array];
+    return arrayCopy;
+}
+
+console.log('Clone function', cloneFunc([1,2,3,4,5]));
+
+
+// 2.
+const lastElementFunc = (array) => {
+    return array[array.length - 1];
+}
+
+console.log('Last element', lastElementFunc([19,'hello',22,33,'world']));
+
+
+// 3.
+const toStringFunc = (array) => {
+    return array.join(' ');
+}
+
+console.log('To String function', toStringFunc(['Sara', 'Pera', 'Marko', 'Lazar']));
+
+
+// 4.
+const checkIfEvenFunc = (numbers) => { // [3,7,10,23,0]
+    numbers.forEach((number) => {
+        if(number % 2 === 0 && number !== 0) {
+            console.log(`${number} is even.`);
+        } else if(number % 2 !== 0) {
+            console.log(`${number} is odd.`);
+        } else {
+            console.log('Number is 0.');
+        }
+    });
+}
+
+checkIfEvenFunc([3,7,10,23,0]);
+
+
+// 5.
+const sortAscFunc = (array) => {
+    if(array.every(element => typeof element === 'string')) {
+        return array.sort();
+    } else {
+        return array.sort((x,y) => x-y);
+    }
+}
+
+console.log(sortAscFunc([1,5,7,12,9,8,4,6]));
+
+console.log(sortAscFunc(['Avocado', 'Az Alkmar', 'Yogurt', 'Bannanas', 'Milk', 'Cereals']));
+
+
+// 6. 
+const extractSubArraysFunc = (array) => {
+    array.forEach((arr, idx) => {
+        console.log(`Array ${idx+1} contains these elements:`);
+        arr.forEach(element => console.log(element));
+    })
+}
+
+extractSubArraysFunc([[1,4,5], ['test', 22, 33], [88, 99, 'hello']]);
+
+
+// 7.
+const calcFunc = (array) => {
+    if(array.every(element => typeof element === 'number')) {
+       const sum = array.reduce((prevVal, currVal) => prevVal + currVal);
+       const product = array.reduce((prevVal, currVal) => prevVal * currVal);
+       return `Result is ${sum + product}`; 
+    }
+    return `Each element in array has to be a number.`
+}
+
+console.log(calcFunc([1,5,10]));
+
+console.log(calcFunc(['Avocado', 5, 6]));
+
+
+// 8.
+const promptArrFunc = () => {
+    const promptArr = [];
+    for(let i = 0; i < 3; i++) {
+        let item = prompt('Enter your value');
+        promptArr.push(item);
+    }
+    return promptArr;
+}
+
+// console.log('Prompt Array', promptArrFunc());
+
+
+// 9.
+const checkIfNumber = (array) => {
+    array.map((element, idx, array) => {
+        let parsedEl = parseInt(element);
+        if(!isNaN(parseInt(parsedEl))) {
+            array[idx] = parsedEl;
+        }
+    });
+    return array;
+}
+
+let promptArr = promptArrFunc();
+let modifiedPromptArr = checkIfNumber(promptArr);
+console.log('Modified Prompt Array', modifiedPromptArr);
+
+
+// 10.
+const checkLeapYearFunc = (years) => {
+    years.forEach(year => {
+        if(year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+            console.log(`${year} is a leap year!`)
+        }
+    });
+}
+
+checkLeapYearFunc([2020, 2022, 1741, 1882, 2000]);
+
+
+// 11.
+const checkForDuplicateFunc = (array) => {
+    let duplicates = array.filter((element,idx,array) => {
+        return array.indexOf(element) !== idx;
+    });
+    return duplicates;
+};
+
+console.log('Duplicates', checkForDuplicateFunc([1,2,1,3,4,5,4,6,3,7,6,9]));
+
+
+// 12.
+const sumUnionFunc = (array1, array2, array3) => {
+    // const unionArr = array1.concat(array2, array3); // ! 1. nacin - spajanje pomocu CONCAT funkcije
+    const unionArr = [...array1, ...array2, ...array3]; // ! 2. nacin - spajanje pomocu SPREAD operatora
+    return unionArr.reduce((prevVal, currVal) => prevVal + currVal);
+}
+
+console.log(`Sum of union of arrays is: ${sumUnionFunc([1,2,3], [4,5,6], [7,8,9])}`);
+
+
+// 13. 
+const removeItemsFunc = (array) => {
+    array.forEach((item,idx,array) => {
+        if(item === null || item === undefined || item === 0 || item === false) {
+            array.splice(idx,1);
+        }
+    });
+    return array;
+}
+
+console.log('Removed unwanted items', removeItemsFunc([undefined, 1, null, 'hey', 0 , 100, false, true]));
+
+
+// 14. 
+const books = [
+    {
+        id: 1,
+        author: 'Steven King',
+        title: 'Misery'
+    },
+    {
+        id: 2,
+        author: 'Steven King',
+        title: 'The Shining'
+    },
+    {
+        id: 3,
+        author: 'Steven King',
+        title: 'Doctor Sleep'
+    }
+];
+
+console.log(books.sort((a,b) => {
+    return a.title > b.title ? 1 : -1;
+}));
+
+
+// 15.
+const findBiggestNum = (numbers) => {
+    return Math.max(...numbers);
+}
+
+console.log(`The biggest number is: ${findBiggestNum([1,4,111,2,3,5])}`);
+
+
+// 16.
+const createArrayFunc = (length) => {
+    let arr = new Array(length);
+    return arr.fill(0);
+}
+
+console.log('Filled with 0 array:', createArrayFunc(5));
+
+
+// 17.
+const reverseArray = (array) => {
+    const reversedArr = [];
+    for(let i = array.length-1; i >= 0; i--) {
+        reversedArr.push(array[i]);
+    }
+    return reversedArr;
+}
+
+console.log('Reversed Array', reverseArray([1,2,3,4,5]));
+
+
+// 18.
+const checkIfSameFunc = (array1, array2) => {
+    if(array1.length !== array2.length) {
+        return false;
+    }
+    const comparation = array1.map((item,idx) => array2[idx] === item);
+    
+    return comparation.includes(false) ? false : true;
+}
+
+console.log('Arrays are same: ',checkIfSameFunc([1,2,3], [1,2,3])); // true
+console.log('Arrays are same: ',checkIfSameFunc([1,12,3], [1,2,3])); // false
+console.log('Arrays are same: ',checkIfSameFunc([1,2,3,10], [1,2,3])); // false
+
+
+// 19.
+const getArrayDuplicatesNumber = (array) => {
+    let counterOfDuplicates = 0;
+    array.filter((element,idx,array) => {
+        if(array.indexOf(element) !== idx) {
+            counterOfDuplicates++;
+        }
+    });
+    return counterOfDuplicates > 0 ? `There are ${counterOfDuplicates} duplicates in this array` : `There are no duplicates in this array`;
+}
+
+console.log(getArrayDuplicatesNumber([1,2,3,1,2,4,5,6,3])); // There are 3 duplicates in this array
+
+console.log(getArrayDuplicatesNumber([1,2,3,4,5])); // There are no duplicates in this array
+
+
+// 20.
+const pera = {
+    name: 'Pera Peric',
+    grades: {
+        tehnicko: [4,3,2,4,5],
+        matematika: [4,4,2,5,4],
+        srpski: [5,5,4,3,2]
+    }
+}
+
+const findAnAverageFunc = (student) => {
+    const allGrades = [];
+    let average = 0;
+    for(let key in student.grades) {
+        for(let grade of student.grades[key]) {
+            allGrades.push(grade);
+        }
+    }
+    average = allGrades.reduce((prevVal, currVal) => prevVal + currVal, 0) / allGrades.length;
+    return average;
+}
+
+console.log(`${pera.name} has an average grade of ${findAnAverageFunc(pera)}`);
