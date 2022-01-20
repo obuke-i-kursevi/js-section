@@ -224,7 +224,7 @@ resultNew = resultNew / 2;
 
 console.log(`Current result is ${resultNew}`);
 
-alert(resultNew);
+// alert(resultNew);
 
 console.log(userInput);
 
@@ -237,7 +237,7 @@ function sayHi(name) {
   alert(`Welcome ${name}`);
 }
 
-sayHi('Petar Petrovic');
+// sayHi('Petar Petrovic');
 
 // sayHi('Marko Markovic');
 
@@ -514,3 +514,216 @@ console.log(course.languages[course.languages.length-1]); // 'CSS3'
 randomVar = null;
 
 console.log(typeof randomVar);
+
+
+
+
+
+
+// ! 5. cas (20.01.2022.)
+
+console.log('-------------------- 5. cas (20.01.2022.) ---------------------');
+
+// ! Operatori poredjenja
+
+// * ==     -->     loose equality (poredi samo vrednosti)
+
+console.log(10 == 10); // true
+
+console.log('Hello' == 'Hello');
+
+console.log('Hello' != 'Hello'); // false
+
+ 
+console.log(5 == '5'); // true
+
+
+
+// * ===     -->    strict equality (poredi i vrednosti i tip podataka)
+
+console.log(5 === '5'); // false
+
+console.log(30 === 30); // true
+
+console.log(11 !== 11); // false
+
+
+console.log('1' !== 1); // true
+
+
+
+// ! Poredjenje po tome da li je neki broj veci ili manji
+
+
+console.log(`25 > 3 = ${25 > 3}`); // true
+
+console.log(`-15.3 < 0 = ${-15.3 < 0}`); // true
+
+console.log(`100 > 200 = ${100 > 200}`); // false
+
+console.log(`5 >= 5 = ${5 >= 5}`); // true
+
+console.log(`9 <= 9 = ${9 <= 9}`); // true
+
+console.log(`33 > '42' = ${33 > '42'}`); // false
+
+console.log(`33 > '12' = ${33 > '12'}`); // true
+
+
+
+// ! NOT (!) operator
+
+console.log(`Not operator for 'false' returns = ${!false}`); // true
+
+console.log(`Not operator for 'true' returns = ${!true}`); // false
+
+console.log(`20 > 10 with NOT operator = ${!20 > 10}`); // false
+
+console.log(`2 === 2 with NOT operator = ${!2 === 2}`); // false
+
+
+
+// ! POREDJENJE STRINGOVA
+
+// JavaScript poredi stringove po tzv. 'leksikografskom redosledu'
+
+// to znaci da je b > a
+
+console.log(`'b' > 'a' = ${'b' > 'a'}`); // true
+
+console.log(`'ab' > 'aa' = ${'ab' > 'aa'}`); // true
+
+console.log(`'c' > 'C' = ${'c' > 'C'}`); // true
+
+console.log(`'a' > 'B' = ${'a' > 'B'}`); // true
+
+
+
+
+// ! STATEMENTI
+// 1. IF
+// 2. IF - ELSE
+// 3. IF - ELSE IF - ELSE
+
+
+// * 1. IF statement
+
+if(5 === '5') {
+  console.log('5 is equal to 5!');
+}
+
+
+if(1 !== 1) {
+  console.log('1 is not equal 1');
+}
+
+if(45 === '45') {
+  console.log('45 is equal to "45"');
+}
+
+
+// kroz prompt prozor ukucati neki broj i proveriti da li je taj broj veci od nule. Ako jeste ispisati 'vece od nule'.
+
+const number = prompt('Enter your number');
+
+if(number > 0) {
+  console.log('veci od nula');
+}
+
+
+// * 2. IF - ELSE blok
+
+if(number > 0) {
+  console.log(`${number} je veci od nule`);
+} else {
+  console.log(`${number} je manji od nule`);
+}
+
+
+// * 3. IF - ELSE IF - ELSE
+if(number > 0) {
+  console.log(`${number} je veci od nule`);
+} else if(number < 0) {
+  console.log(`${number} je manji od nule`);
+} else {
+  console.log(`${number} je nula!`);
+}
+
+
+
+// ! Ugnjezdeni IF - ELSE blok
+
+if(number >= 0) {
+  if(number > 0) {
+    console.log(`${number} je veci od nule`);
+  } else {
+    console.log(`${number} je nula!`);
+  }
+} else {
+  console.log(`${number} je manji od nule`);
+}
+
+
+
+// ! POREDJENJE OBJEKATA I NIZOVA
+
+const course1 = {
+  name: 'Java'
+}
+
+const course2 = {
+  name: 'Java'
+}
+
+console.log(`Comparing tow different objects with === : ${course1 === course2}`); // false
+
+
+const courses1 = ['Java', 'JavaScript', 'C#'];
+
+const courses2 = ['Java', 'JavaScript', 'C#'];
+
+
+console.log(`Comparing two different arrays with === : ${courses1 === courses2}`); // false
+
+
+// TODO 5. zadatak domaci
+/**
+ * 1. Kreirati dve varijable tipa number sa vrednostima 30 i 50
+ * 2. Uporediti varijable koristeci == i === i rezultate poredjenja ispisati na konzoli
+ * 3. Uporediti varijable koristeci != i !== i rezultate poredjenja ispisati na konzoli
+ * 4. Rezultat poredjenja iz 2. zadatka invert-ovati uz NOT operator i ispisati na konzoli
+ * 5. Kreirati 3. varijablu sa vrednoscu '30' (tipa string)
+ * 6. Uporediti varijablu sa vrednoscu 30 (number) i '30' (string) pomocu oba tipa equality operatora
+ *    (== i ===), uporediti razlike rezultata poredjenja
+ * 7. Kreirati 4. varijablu (npr. promptAnswer) cija se vrednost dobija kroz prompt prozor browser-a
+ * 8. Vrednost varijable proveriti kroz if - else if - else uslove i shodno tome ispisati status o varijabli u formatu
+ *    `Value ${promptAnswer} is ________`
+*/
+
+const variable1 = 30;
+const variable2 = 50;
+
+console.log(`variable1 is equal to variable 2: ${variable1 == variable2}`); // false
+console.log(`variable1 is equal to variable 2: ${variable1 === variable2}`); // false
+
+console.log(`variable1 is not equal to variable 2: ${variable1 != variable2}`); // true
+console.log(`variable1 is not equal to variable 2: ${variable1 !== variable2}`); // true
+
+const compareOfVars = variable1 === variable2;
+
+console.log(compareOfVars); // false
+console.log(!compareOfVars); // true  // ! Revert-ovan false u true pomocu ! znaka (NOT operatora)
+
+const variable3 = '30';
+console.log(`variable3 is equal to 30: ${variable3 === 30}`); // false
+console.log(`variable3 is equal to 30: ${variable3 == 30}`); // true
+
+const promptAnswer = prompt('Enter your value:');
+
+if (promptAnswer > 0) {
+    console.log(`Value ${promptAnswer} is positive.`);
+} else if (promptAnswer < 0) {
+    console.log(`Value ${promptAnswer} is negative.`);
+} else {
+    console.log(`Value is zero.`);
+}
