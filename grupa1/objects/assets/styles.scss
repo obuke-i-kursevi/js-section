@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:ital@1&display=swap');
+
+body {
+    background: {
+        image: url('../images/library.jpg');
+        position: center;
+    }
+}
+
+.actions-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: space-between;
+}
+
+.see-all-wrapper {
+    text-align: center;
+}
+
+.library-main-title {
+    align-self: center;
+    margin-top: 50px;
+    text: {
+        align: center;
+        shadow: 4px 4px 5px white;
+    }
+    font: {
+        weight: bolder;
+        size: 40px;
+        family:  'Gentium Book Basic', serif;
+    }
+    color: purple;
+}
+
+.search-book-wrapper,
+.add-book-wrapper,
+.delete-book-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wrapper-subtitle,
+.add-book-title {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.wrapper-subtitle,
+.search-book-title,
+.add-book-title,
+.book-info-title {
+    color: rgb(199, 33, 199);
+    font: {
+        family:  'Gentium Book Basic', serif;
+        size: 27px;
+    }
+    text: {
+        shadow: 3px 3px 4px white;
+    }
+}
+
+#search-book-input,
+#book-name-input,
+#book-writter-input,
+#book-delete-input,
+#additional-attribute-name-input,
+#additional-attribute-value-input {
+    font: {
+        family: 'Gentium Book Basic', serif;
+        size: 16px;
+    }
+    color: purple;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+}
+
+#search-book-btn,
+#add-book-btn,
+#delete-book-btn,
+#see-all-btn {
+    margin-top: 15px;
+    width: 130px;
+    padding: 5px;
+    font: {
+        family: 'Gentium Book Basic', serif;
+        size: 20px;
+    }
+    color: purple;
+    padding: 15px;
+}
+
+#see-all-btn {
+    width: 200px;
+    background-color: rgb(234, 234, 243);
+}
+
+#search-book-btn {
+    background-color: rgb(233, 205, 233);
+}
+
+#search-book-btn:hover {
+    background-color: rgb(228, 172, 228);
+}
+
+#add-book-btn {
+    background-color: rgb(206, 233, 206);
+}
+
+#see-all-btn:hover {
+    background-color: rgb(224, 224, 231);
+}
+
+#add-book-btn:hover {
+    background-color: rgb(154, 219, 154);
+}
+
+#delete-book-btn {
+    background-color: rgb(231, 185, 185);
+}
+
+#delete-book-btn:hover {
+    background-color: rgb(221, 155, 155);
+}
+
+#search-book-btn:hover,
+#add-book-btn:hover,
+#delete-book-btn:hover,
+#see-all-btn:hover {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+input {
+    outline: none;
+}
+
+input:focus {
+    background-color: rgb(245, 230, 245);
+    transition: 0.3s ease;
+}
+
