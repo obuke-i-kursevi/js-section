@@ -727,3 +727,215 @@ if (promptAnswer > 0) {
 } else {
     console.log(`Value is zero.`);
 }
+
+
+
+// ! 6. cas (25.01.2022.)
+
+console.log('-------------------- 6. cas (25.01.2022.) -------------------');
+
+// * visestruki logicki uslovi:
+// 1. logicko i (&&) --> kaze da svi uslovi moraju biti zadovoljeni
+    // true + true daju true
+    // true + false daju false
+    // false + false daju false
+// 2. logicko ili (||) --> kaze da bar jedan od uslova mora biti zadovoljen
+    // true + true daju true
+    // true + false daju true
+    // false + false daju false
+
+// '33' === 33
+if(number > 0 && number === 33) {
+  console.log(`Your number ${number} is 33, which is greater than 0!`);
+}
+
+const parsedNumber = parseInt(number);
+
+if(parsedNumber > 0 && parsedNumber === 33) {
+  console.log(`Your number ${number} is 33, which is greater than 0!`);
+}
+
+
+if(parsedNumber > 0 || parsedNumber < 0) {
+  console.log(`Your ${number} is either positive or negative!`);
+}
+
+
+if((parsedNumber > 0 && parsedNumber === 5) || parsedNumber < 0) {
+  console.log(`Your number ${parsedNumber} is either positive or negative or equal to 5!`);
+}
+
+
+// ! Logicko && ima prioritet u odnosu na logicko ||
+
+if(parsedNumber > 0 && parsedNumber === 5 || parsedNumber < 0) {
+  console.log(`Your number ${parsedNumber} is either positive or negative or equal to 5!`);
+}
+
+
+
+// ! Ternarni operator (kondicioni operator)
+
+let answer = parsedNumber < 0 
+  ? `${parsedNumber} is less than 0.` 
+  : `${parsedNumber} is equal or greater than 0.`;
+
+console.log(`Ternary operator returns: ${answer}`);
+
+
+
+// ! kombinovanje if-else statment-a i ternarnog operatora
+
+if(parsedNumber === 0) {
+  console.log(`Your number ${parsedNumber} is equal to Zero!`);
+} else {
+  let answer = parsedNumber > 0 ? `${parsedNumber} is greater than 0!` : `${parsedNumber} is less than 0!`;
+  console.log(answer);
+}
+
+
+
+// ! TRUTHY i FALSY vrednosti
+
+/**
+ * FALSY vrednosti: false, '', ``, "", 0, -0, 0n, NaN, null, undefined
+ * TRUTHY vrednosti: bilo sta sto nije ovo gore navedeno, npr: 'Petar Petrovic', 24, -33.5, true, itd.
+*/
+
+let falsyValue = '';
+let truthyValue = 'JS cas (15.)';
+
+if(falsyValue) {
+  console.log('Entered falsy block');
+}
+
+if(truthyValue) {
+  console.log('Entered truthy block');
+}
+
+
+// primer:
+
+let resultOfOperation = parsedNumber > 0 && parsedNumber < 50;
+
+if(resultOfOperation) {
+  console.log('True block');
+}
+
+
+// primer:
+
+let userInput1;
+
+if(userInput1) {
+  console.log("User's input", userInput1);
+} else if(userInput1 === null) {
+  console.log("No value for User's input");
+} else {
+  console.log('None of above');
+}
+
+
+
+// ! Trikovi
+
+// * 1. truthy ili falsy vrednosti se mogu pretvoriti u true ili false bukvalno
+
+let userInput1Converted = !!userInput1;
+
+console.log(`Converted user input: ${userInput1Converted}`);
+
+
+// * 2. moguce je vrednost neke varijable dobiti na osnovu nekog logickog operatora
+
+// 1. primer sa logickim ||
+
+userInput1 = '';
+
+let userName = userInput1 || 'Petar';
+
+console.log(`User name is ${userName}`);
+
+
+// 2. primer sa logickim &&
+
+let registeredUser = true;
+
+userName = registeredUser && 'marko@gmail.com';
+
+console.log(`User name again is ${userName}`);
+
+
+
+
+// ! SWITCH case-ovi:
+
+const grade = 4;
+
+
+switch(grade) {
+  case 1:
+    console.log(`Math grade is 1 😪`);
+    break;
+  case 2:
+    console.log(`Math grade is 2 😣`);
+    break;
+  case 3:
+    console.log(`Math grade is 3 😑`);
+    break;
+  case 4:
+    console.log(`Math grade is 4 🙂`);
+    break;
+  case 5:
+    console.log(`Math grade is 5 🤩`);
+    break;
+}
+
+
+
+
+// ! PETLJE (loops)
+
+/**
+ * 1. for petlja (sluzi za pozivanje nekog koda nekoliko puta u zavinosti od brojaca)
+ * 2. for-of petlja (sluzi za pozivanje nad svakim elementom nekog niza)
+ * 3. for-in petlja (sluzi za vracanje svih KEY-eva nekog objekta i eventualno vrednosti vezane za KEY-eve)
+ * 4. while petlja (sluzi za izvrsavanje nekog koda sve dokle god je neki logicki uslov zadovoljen)
+ * 5. do-while petlja
+ */
+
+
+// * 1. FOR petlja
+
+
+for(let counter = 1; counter <= 5; counter++) {
+  console.log(`Counter of inside for loop is ${counter}`);
+}
+
+
+// Primer -> program koji racuna zbir prvih 100 prirodnih brojeva
+
+let sum = 0;
+
+for(let i = 1; i <= 100; i++) {
+  sum += i;
+}
+
+console.log(`Sum of first 100 natural numbers = ${sum}`);
+
+
+// * FOR OF petlja
+
+const programmingLanguages = ['Java', 'JavaScript', 'C#', 'Python', 'Solidity'];
+
+console.log(programmingLanguages);
+
+for(let i = 0; i < programmingLanguages.length; i++) {
+  console.log(`Language: ${programmingLanguages[i]}`);
+}
+
+// FOR OF:
+
+for(let language of programmingLanguages) {
+  console.log(`For of language: ${language}`);
+}
