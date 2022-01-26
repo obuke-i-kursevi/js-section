@@ -11,4 +11,4 @@ const additionalAttributeNameInput = document.getElementById('additional-attribu
 const additionalAttributeValueInput = document.getElementById('additional-attribute-value-input');
 const addBookBtn = document.getElementById('add-book-btn');
 const deleteBookInput = document.getElementById('book-delete-input');
-const deleteBookBtn = document.getElementById('delete-book-input');
+const deleteBookBtn = document.getElementById('delete-book-btn');
