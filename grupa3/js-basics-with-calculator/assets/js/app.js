@@ -22,6 +22,9 @@ function writeToLog(typeOfOperation, previousResult, operationNumber, newResult)
     console.log(logOfOperations);
 }
 
+
+// ! STARA VERZIJA KODA, pre refaktorisanja
+/*
 // sabiranje
 function add() {
     const enteredNumber = getUserNumberInput();
@@ -58,6 +61,47 @@ function divide() {
     currentResult /= enteredNumber; 
     writeOutput('/', initialResult, enteredNumber);
     writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
+}
+
+*/
+
+// ! NOVA VERZIJA KODA, nakon refaktorisanja
+
+function mathOperation(operationType) {
+    const enteredNumber = getUserNumberInput();
+    const initialResult = currentResult;
+    let operationSign = '';
+    if(operationType === 'PLUS') {
+        currentResult += enteredNumber;
+        operationSign = '+';
+    } else if(operationType === 'SUBTRACT') {
+        currentResult -= enteredNumber;
+        operationSign = '-';
+    } else if(operationType === 'MULTIPLY') {
+        currentResult *= enteredNumber;
+        operationSign = '*';
+    } else {
+        currentResult /= enteredNumber;
+        operationSign = '/';
+    }
+    writeOutput(operationSign, initialResult, enteredNumber);
+    writeToLog(operationType, initialResult, enteredNumber, currentResult);
+}
+
+function add() {
+    mathOperation('PLUS');
+}
+
+function subtract() {
+    mathOperation('SUBTRACT');
+}
+
+function multiply() {
+    mathOperation('MULTIPLY');
+}
+
+function divide() {
+    mathOperation('DIVIDE');
 }
 
 // clear
