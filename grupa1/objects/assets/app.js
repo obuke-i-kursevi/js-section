@@ -49,7 +49,7 @@ const findBook = (userInput) => {
 
     // ! 7. zadatak -> NOVA VERZIJA KODA --> ovde se radi pretraga svih knjiga na osnovu searchTerm-a (knjige koje sadrze u imenu zadati string)
     const foundBooks = books.filter(book => {
-        const partsOfName = book.name.toLowerCase().trim().split(' ');
+        const partsOfName = book.name.toLowerCase().trim().split(' '); // ['head', 'hunters']
         const books = partsOfName.includes(searchTerm);
         return books;
     }); 
@@ -170,6 +170,6 @@ const clearFields = () => {
     4. Dodati validaciju polja, nijedno polje za unos ne sme ostati prazno, ako je prazno obavestiti korisnika da mora uneti neku vrednost
     5. Dodati validaciju koja proverava da li u postojecem nizu vec postoji knjiga sa istim nazivom. Ako postoji obavestiti korisnika.
     6. Pri ispisu knjiga na konzoli, knjige ispisati po rastucem redosledu po nazivu
-    7. Update-ovati search tako da nadje ne samo po striktno nazivu knjige knjigu, vec i po delu reci. Npr ako korisnik ukuca 'head' onda
-       automatski treba da dobije sve knjige koje imaju tu rec 'head' u nazivu
+    7. Update-ovati search tako da nadje ne samo po striktno nazivu knjige knjigu, vec i po delu reci. 
+       Npr ako korisnik ukuca 'head' onda automatski treba da dobije sve knjige koje imaju tu rec 'head' u nazivu
 */

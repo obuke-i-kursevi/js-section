@@ -1056,7 +1056,7 @@ console.log(`Maximum value is ${maxValueNew}`); // 123
 
 
 
-// ! Array desctructing - koncept kojim se niz destrukturira u varijable
+// ! Array destructing - koncept kojim se niz destrukturira u varijable
 
 let singleStudent = ['Nemanja', 'Nemanjic', 33, 'doctoral', true];
 

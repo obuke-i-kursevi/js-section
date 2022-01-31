@@ -1041,7 +1041,7 @@ console.log(`Maximum value is ${maxValue}`);
 
 
 
-// ! ARRAY desctructing - koncept kojim destrukturiranje niza u varijable
+// ! ARRAY destructing - koncept kojim destrukturiranje niza u varijable
 
 let singleStudent = ['Pera', 'Peric', 'master', 33, false];
 

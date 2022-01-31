@@ -827,7 +827,7 @@ for(let i = 1; i<=100; i++) {
 
 console.log(`Sum of first 100 natural numbers: ${sum}`);
 
-// ! 6. cas domaci
+// ! 6. i 7. cas domaci
 
 // 1. Uporediti vrednost kreirane varijable (const someNum = prompt('Please enter your number')) pomocu ternarnog operatora tako da se ispise da li je broj pozitivan ili negativan
 // 2. Dodati OR (||) logicki operator kako bi se proverilo da li je someNum vrednost nula ili veca od nule i rezultat ispisati na konzoli zajedno

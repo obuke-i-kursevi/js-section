@@ -49,7 +49,7 @@ const findBook = (userInput) => {
 
     // ! 7. zadatak -> NOVA VERZIJA KODA --> ovde se radi pretraga svih knjiga na osnovu searchTerm-a (knjige koje sadrze u imenu zadati string)
     const foundBooks = books.filter(book => {
-        const partsOfName = book.name.toLowerCase().trim().split(' ');
+        const partsOfName = book.name.toLowerCase().trim().split(' '); // 'Head Hunters' --> ['head','hunters']
         const books = partsOfName.includes(searchTerm);
         return books;
     }); 
