@@ -76,21 +76,41 @@ function clear() {
 function mathOperation(operationType) {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    let mathSign = '';
-    if(operationType === 'PLUS') {
-        currentResult += enteredNumber;
-        mathSign = '+';
-    } else if(operationType === 'SUBTRACT') {
-        currentResult -= enteredNumber;
-        mathSign = '-';
-    } else if(operationType === 'MULTIPLY') {
-        currentResult *= enteredNumber;
-        mathSign = '*';
-    } else {
-        currentResult /= enteredNumber;
-        mathSign = '/';
+    let operationSign = '';
+    // ! 1. slucaj sa koriscenjem switch-case blokova
+    switch(operationType) {
+        case 'PLUS':
+            currentResult += enteredNumber;
+            operationSign = '+';
+            break;
+        case 'SUBTRACT':
+            currentResult -= enteredNumber;
+            operationSign = '-';
+            break;
+        case 'MULTIPLY':
+            currentResult *= enteredNumber;
+            operationSign = '*';
+            break;
+        case 'DIVIDE':
+            currentResult /= enteredNumber;
+            operationSign = '/';
+            break;
     }
-    writeOutput(mathSign, initialResult, enteredNumber);
+    // ! 2. slucaj sa koriscenjem IF - ELSE blokova
+    // if(operationType === 'PLUS') {
+    //     currentResult += enteredNumber;
+    //     operationSign = '+';
+    // } else if(operationType === 'SUBTRACT') {
+    //     currentResult -= enteredNumber;
+    //     operationSign = '-';
+    // } else if(operationType === 'MULTIPLY') {
+    //     currentResult *= enteredNumber;
+    //     operationSign = '*';
+    // } else {
+    //     currentResult /= enteredNumber;
+    //     operationSign = '/';
+    // }
+    writeOutput(operationSign, initialResult, enteredNumber);
     writeToLog(operationType, initialResult, enteredNumber, currentResult);
 }
 

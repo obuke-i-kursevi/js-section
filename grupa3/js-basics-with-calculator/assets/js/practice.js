@@ -1,3 +1,5 @@
+'use strict';
+
 // ! 1. cas (30.12.2021)
 
 console.log('-------------------- 1. cas (30.12.2021) ---------------------------');
@@ -1213,3 +1215,196 @@ foreignLanguages[0].teachers = [
 for(let i=0; i < foreignLanguages[0].teachers.length; i++) {
   console.log(`Teacher number ${i+1}: ${foreignLanguages[0].teachers[i].firstName} ${foreignLanguages[0].teachers[i].lastName} is teaching ${foreignLanguages[0].name}`);
 }
+
+
+
+
+// ! 8. cas (01.02.2022.)
+
+console.log('----------------- 8.cas (01.02.2022.) -------------');
+
+
+// ES5 i ES6
+
+
+// * VAR vs LET vs CONST varijable (*)
+
+// * 1. razlika => VAR dozvoljava re-deklarisanje, dok LET ne dozvoljava
+
+let city = 'Novi Sad';
+//let city = 'New York'; // ! Identifier 'city' has already been declared
+
+// city = 'New York'; // * ovo je validno (re-inicijalizovanje)
+
+console.log(city);
+
+// VS
+
+var country = 'Serbia';
+var country = 'USA';
+
+console.log(country); // * USA
+
+const nesto = 'Nesto';
+// const nesto = 'Nesto 2'; // Identifier 'nesto' has already been declared
+
+
+
+// * 2. razlika => VAR se kreira ili GLOBALNO ili na nivou FUNKCIJE (dakle ili su u pitanju GLOBAL scope varijable ili su FUNCTION scope)
+
+var check = true;
+
+if(check) {
+  var zipCode = 21000;
+}
+
+console.log(zipCode); // 21000
+
+
+// VS
+
+if(check) {
+  let zipCode1 = 23123;
+}
+
+try {
+  console.log(zipCode1);
+} catch(err) {
+  console.log(err);  // ! ReferenceError: zipCode1 is not defined
+}
+
+
+function doSomething() {
+  var someString = 'Hello WOrld';
+  zipCode = 44000;
+}
+
+// console.log(someString); // ! ReferenceError: someString is not defined
+
+
+
+// * 3. razlika => Hoisting
+
+// VAR
+
+console.log(myNumb); // undefined
+var myNumb = 22;
+
+// * ovo je engine uradio u pozadini:
+// var myNumb;
+// console.log(myNumb); // undefined
+// myNumb = 22;
+
+
+// VS
+
+// console.log(myNumb1); // ! ReferenceError: Cannot access 'myNumb1' before initialization
+let myNumb1 = 55;
+
+// console.log(myNumb2); // ! ReferenceError: Cannot access 'myNumb2' before initialization
+const myNumb2 = 11;
+
+
+
+// ! STRICT MODE
+
+// primer:
+
+variable333 = 'jupiter';
+
+console.log(variable333); // jupiter
+
+
+
+
+// ! Struktura JS Engine-a (Heap i Stack)
+
+function getPlanetName(planetName) {
+  return planetName;
+}
+
+function printPlanetName() {
+  const planet = getPlanetName('Jupiter');
+  console.log(`Planet name is ${planet}`);
+}
+
+printPlanetName();
+
+
+
+// ! PRIMITIVNI vs REFERENTNI tipovi podataka (*)
+
+// PRIMITIVNI tipovi --> null, undefined, number, symbol, string, boolean
+
+let primitive1 = null;
+let primitive2 = undefined;
+let primitive3 = 'Good Morning';
+let primitive4 = true;
+let primitive5 = 44;
+
+
+// REFERENTNI tipovi --> objekti i nizovi
+
+let referenceObj = {
+  firstName: 'Marko',
+  lastName: 'Markovic'
+}
+
+let referenceArr = [1,2,3,4];
+
+
+// primer:
+
+let referenceOb2 = {
+  course: 'Java',
+  teacher: 'Nikola Nikolic'
+}
+
+
+// vazno zbog kopiranja vrednosti:
+
+// * kopiranje primitivnih tipova
+
+let numb1 = 5;
+
+let numb2 = numb1; // assignovali smo vrednost 5 varijablu numb2 (iz numb1 varijable)
+
+console.log(numb1);
+console.log(numb2);
+
+numb1 = 555;
+
+console.log(numb1); // 555
+console.log(numb2); // 5
+
+
+// * kopiranje referentnih tipova
+
+// * 1. pokusaj kopiranja objekta
+
+let copyObject = referenceOb2;
+
+console.log(referenceOb2);
+console.log(copyObject);
+
+referenceOb2.teacher = 'Sara Saric';
+
+console.log(referenceOb2);
+console.log(copyObject);
+
+
+// * 2. pokusaj kopiranja niza
+
+let originalArr = [1,2,3,4];
+
+let copyArr = originalArr;
+
+originalArr[0] = 101;
+
+console.log(originalArr);
+console.log(copyArr);
+
+copyArr.push(99);
+
+console.log(originalArr);
+console.log(copyArr);
