@@ -506,7 +506,15 @@ workerName2.call(worker2, 'day', 5); // Marko Markovic has been working for 5 ye
 workerName2.apply(worker2, ['night', 10]); // Marko Markovic has been working for 10 years in night shifts.
 
 
+// ! NAPOMENA:
 
+/**
+ * 1. Kod function declaration formata funkcija, kao npr:
+ *      function mojaFunkcija() {
+ *      }
+ *    dodavanje poziva call,bind,apply nakon zatvorene viticaste zagrade NE RADI.
+ * 2. Kod function expression formata (to je cuvanje funkcije u varijabli) ovo prethodno navedeno RADI.
+ */
 
 // TODO Zadaci za vezbu:
 
