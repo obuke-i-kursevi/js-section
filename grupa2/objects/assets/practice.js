@@ -353,6 +353,10 @@ album.listSongs = function() {
 album.listSongs();
 
 
+// ! 18. cas (02.02.2022.)
+
+console.log('-------------- 18. cas (02.02.2022.) -------------');
+
 
 // * pokusaj vracanja artist-a za album
 

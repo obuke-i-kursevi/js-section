@@ -340,6 +340,11 @@ album.listSongs = function() {
 album.listSongs(); // * radi
 
 
+// ! 18. cas (02.02.2022.)
+
+console.log('-------------- 18. cas (02.02.2022.) -------------');
+
+
 // * 2. pokusaj
 
 album.listInfo = function() {
