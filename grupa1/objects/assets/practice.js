@@ -606,11 +606,11 @@ const updateDataWithApply = function(region, population) {
 }.apply(cityNoviSad, newData);
 
 
-// 8. Kreirati objekat person i atributom name (npr 'Marko') i
+// 8. Kreirati objekat person sa atributom name (npr 'Marko') i
 //    sa ugnjezdenim objektom kao property-em objekta koji ima isto name atribut (npr 'Petar') i metodom unutar njega koja vraca ime osobe.
 //    Metodu getName() pozvati i za prvi name atribut i za drugi.
 
-var person = {
+let person = {
     name : 'Marko',
     data : {
         name : "Petar",
@@ -639,4 +639,4 @@ const zipcode = {
         updateZipCode();
     }
 }
-zipcode.checkZipcode();
+zipcode.checkZipcode(); // 33000 --> 55000
