@@ -238,3 +238,222 @@ btnCounter.addEventListener('click', function increaseCounter() {
 btnStop.addEventListener('click', function stop() {
     stopCounting = true;
 });
+
+
+
+
+// ! 10. cas (08.02.2022.)
+
+console.log('------------- 10.cas (08.02.2022.) -------------');
+
+// ! Uz pomoc arrow funkcija mozemo da kreiramo i objekte
+
+const makeCourse = (courseName) => ({
+    courseName: courseName
+});
+
+console.log(makeCourse('Frontend course'));
+
+
+setTimeout(() => {
+    console.log('Neka vrednost');
+}, 2000);
+
+
+
+// ! Default argumenti funkcije
+
+const randomFunc = (x,y,z = 30) => {
+    const result = (x+y) * z;
+    return result;
+}
+
+console.log(`Result is ${randomFunc(5,3,2)}`); // Result is 240
+
+
+const randomFuncWithoutParam = (a,b) => a/b;
+
+console.log(`Result of dividing: ${randomFuncWithoutParam(50)}`); // Result of dividing: NaN
+
+
+
+// ! REST OPERATOR => rest operator komplet pojedinace argumente funkcije konvertuje u NIZ koji se kao takav prosledjuje funkciji
+
+
+// 1. nacin -> uz prosledjivanje niza
+
+const accTransactions = [200,50,-150,-25,40,-20];
+
+const calculateTotal = (transactions) => {
+    let total = 0;
+    for(let transaction of transactions) {
+        total += transaction;
+    }
+    return total;
+}
+
+console.log(`Total of account (with passing an array): ${calculateTotal(accTransactions)} $`);
+
+
+// 2. nacin -> uz REST operator
+
+// ! Rest operator mora biti poslednji formalni parametar neke funkcije!
+
+const accountTotal = (...transactions) => {
+    let total = 0;
+    for(let transaction of transactions) {
+        total += transaction;
+    }
+    return total;
+}
+
+console.log(`Total of account (with passing REST operator): ${accountTotal(200,150,-100,50,-20)} $`);
+
+
+
+// ! NEVALIDAN KOD ISPOD:
+
+// ! 1. kod nije validan jer REST operator mora biti poslednji parametar funkcije
+// const accountTotal = (...transactions, noviParametar) => {
+//     let total = 0;
+//     for(let transaction of transactions) {
+//         total += transaction;
+//     }
+//     return total;
+// }
+
+
+// ! 2. kod nije valida jer mozete koristiti SAMO JEDAN rest operator unutar zagrada funkcije (kao parametar):
+// const mojaFunc = (...prviNiz, ...drugiNiz) => {
+//     console.log(prviNiz);
+//     console.log(drugiNiz)
+// }
+
+
+
+
+// ! FUNKCIJE UNUTAR FUNKCIJA
+
+const funcWithFuncInside = (...arrOfValues) => {
+
+    const checkIfString = (value) => {
+        // ! 1. nacin uz IF - ELSE
+        // if(typeof value === 'string') {
+        //     return value;
+        // } else {
+        //     return false;
+        // }
+        // ! 2. nacin uz kondicioni operator
+        return typeof value === 'string' ? value : false;
+    }
+
+    let arr = [];
+    for(let value of arrOfValues) {
+        arr.push(checkIfString(value));
+    }
+    return arr;
+
+}
+
+console.log(funcWithFuncInside('Test', 1, 'World', 'Jupiter', true, 0));
+
+
+
+
+// ! CALLBACK funkcije
+
+const countStringsAndPrint = (arrOfValues) => {
+    let counter = 0;
+    for(let element of arrOfValues) {
+        if(typeof element === 'string') {
+            counter++;
+        }
+    }
+    alert(`Final count of strings = ${counter}`);
+}
+
+const funcWithFuncInsideNew = (callbackFunc, ...arrOfValues) => {
+    const checkIfString = (value) => typeof value === 'string' ? value : 0;
+
+    let arr = [];
+    for(let value of arrOfValues) {
+        arr.push(checkIfString(value));
+    }
+    callbackFunc(arr);
+}
+
+funcWithFuncInsideNew(countStringsAndPrint, 'Test', 11, 'World', 'Marko', true, -7, 'Hello World');
+
+
+/**
+ *  TODO 10. cas homework:
+ * 
+ *  1. Kreirati funkciju sacuvanu u varijabli sa imenom loadCustomer koja prihvata TRI parametra: firstName, lastName, age
+ *      i vraca kao povratnu vrednost novi objekat ciji se property-iji postavljaju na vrednosti prosledjenih parametara
+ *  2. Testirati loadCustomer funkciju tako sto joj se proslede neki argumenti, npr: 'Petar' , 'Petrovic' , 44
+ *  3. Napisati funkciju koja vraca najduzu rec u celom stringu koji se prosledi kao argument (npr Njegos Petrovic Petar)
+ *      treba da vrati Petrovic. (HINT: pogledati funkciju split() nad stringom)
+ *  4. Napisati funkciju koja ce prihvatiti vrednosti razlicitog tipa (npr: 'Testing', 12, false, 'World', 44, 55, true).
+ *      Te argumente uhvatiti kroz REST operator i za svaki proveriti da li je tipa NUMBER.
+ *      Ukoliko pojedinacan argument jeste tipa NUMBER, ispisati konkretan broj, ako nije ispisati 0.
+ *  5. Napisati funkciju koja vraca tip svakog prosledjenog argumenta u formatu:
+ *      Type of ARGUMENT is TIP.
+ */
+
+
+// 1. i 2.
+
+const loadCustomer = (firstName, lastName, age) => ({
+    firstName: firstName,
+    lastName: lastName,
+    age: age
+});
+
+console.log(loadCustomer('Petar', 'Petrovic', 45));
+
+console.log(loadCustomer('Sara', 'Saric', 30));
+
+
+// 3.
+
+const checkTheLongestWord = (stringParam) => { // 'Petar Njegos Petrovic'
+    let stringArray = stringParam.split(' '); // ['Petar','Njegos','Petrovic']
+    let firstString = stringArray[0]; // 'Petar'
+    for(let i = 1; i < stringArray.length; i++) {
+        if(stringArray[i].length > firstString.length) { // 'petar' .length ==> 5
+            firstString = stringArray[i];
+        }
+    }
+    return firstString;
+}
+
+console.log(`Longest word is ${checkTheLongestWord('Petar Njegos Petrovic')}`); // Longest word is Petrovic
+
+
+
+// 4. zadatak
+const printNumbers = (...arrayOfValues) => {
+    const checkForNumber = (value) => {
+        return typeof value === 'number' ? value : 0;
+    }
+
+    let array = [];
+    for(let val of arrayOfValues) {
+        array.push(checkForNumber(val));
+    }
+    return array;
+}
+
+console.log(printNumbers('Testing', 12, false, 'World', 44, 55, true));
+
+
+// 5. zadatak
+const getTypeForEachArg = (...args) => {
+    let arr = [];
+    for(let val of args) {
+        arr.push(`Type of ${val} is ${typeof val}`);
+    }
+    return arr;
+}
+
+console.log(getTypeForEachArg(1,'Jupiter', false, -555.23, 'a'));
