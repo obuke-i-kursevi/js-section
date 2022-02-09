@@ -141,3 +141,220 @@ for(let course of allListItemsQ) {
 
 
 
+
+
+// ! 20. cas (09.02.2022.)
+
+console.log('------------- 20. cas (09.02.2022.) -------------');
+
+// allListItemsQ[1].className = 'neka-klasa js-neka-klasa';
+
+
+// ! 1. Prolazenje kroz DOM na DOLE u odnosu na neki element:
+
+// 1. childNodes --> vraca SVE child node-ove (cvorove) bez obzira na njihov tip
+// 2. children --> vraca child element node-ove (cvorove), odnosno SAMO elemente
+// 3. querySelector()
+// 4. firstChild --> selektuje PRVI CHILD node, bez obzira na njegov tip
+// 5. firstElementChild --> selektuje PRVI CHILD node koji je ELEMENT node (odnosno element)
+// 6. lastChild --> selektuje POSLEDNJI CHILD node, bez obzira na njegov tip
+// 7. lastElementChild --> selektuje POSLEDNJI CHILD node koji je ELEMENT node (odnosno element)
+
+
+// ! 2. Prolazenje kroz DOM na GORE u odnosu na neki element:
+
+// 1. parentNode --> selektuje parent node bez obzira na njegov tip
+// 2. parentElement --> selektuje parent ELEMENT node, tj element.
+// 3. closest() --> vraca bilo koji parent koji zadovoljava odredjeni selektor
+
+
+
+// ! 3. Proveravanje elemenata na istom nivou u odnosu na neki element (tzv. Siblinge):
+
+// 1. previousElementSibling --> dobavlja element node (element) pre tog elementa
+// 2. previousSibling --> dobavlja prvi node (bilo kog tipa) pre tog elementa
+
+// 1. nextElementSibling --> dobavlja element node (element) nakon tog elementa
+// 2. nextSibling --> dobavlja prvi node (bilo kog tipa) nakon tog elementa
+
+
+
+// ! PROLAZENJE KA DOLE:
+
+const courses = document.querySelector('.js-my-courses-list');
+
+console.dir(courses.children);
+
+console.log(courses.childNodes);
+
+console.log(courses.firstChild);
+
+console.log(courses.firstElementChild);
+
+console.log(courses.lastChild);
+
+console.log(courses.lastElementChild);
+
+
+
+
+// ! PROLAZENJE KA GORE:
+
+const myListItem = document.querySelector('.js-list-item');
+
+console.log(myListItem);
+
+console.log(myListItem.parentElement);
+
+console.log(myListItem.parentNode);
+
+
+// razlika bi bila u sledecem:
+
+console.log(document.documentElement.parentElement);
+
+console.log(document.documentElement.parentNode); // document objekat
+
+
+console.log(myListItem.closest('div'));
+
+console.log(myListItem.closest('.js-list-wrapper'));
+
+
+
+// ! SIBLING ELEMENTI (rodjaci na istom nivou):
+
+console.log(myListItem.previousElementSibling);
+
+console.log(myListItem.nextElementSibling);
+
+
+
+
+// ! BOLJI NACINI STILIZACIJE ELEMENATA KROZ JS:
+
+// Toggle klasa --> dinamicko odredjivanje i uklanjanje klasa nad nekim elementima
+
+const toggleClassesDiv = document.querySelector('.js-toggle-classes-wrapper');
+
+if(!toggleClassesDiv) {
+    for(let element of toggleClassesDiv.children) {
+        element.classList.add('my-paragraph-inactive');
+        element.classList.remove('my-paragraph');
+    }
+}
+
+
+// ili na primer:
+
+let userAnswer = true;
+
+if(userAnswer) {
+    toggleClassesDiv.classList.add('visible');
+} else {
+    toggleClassesDiv.classList.add('not-visible');
+}
+
+
+
+// TODO za domaci:
+
+// Na klik dugmeta hide sakriti <div> , a na klik dugmeta show prikazati <div>
+
+
+
+
+
+// ! KREIRANJE ELEMENATA KROZ JS
+
+// * 1. InnerHTML
+
+// toggleClassesDiv.innerHTML = 'Changing content with innerHTML property';
+
+
+// * 2. createElement() --> metoda za kreiranje novog element node-a (elementa)
+
+const heading3 = document.createElement('h3');
+
+heading3.textContent = 'Hello World!';
+
+// toggleClassesDiv.appendChild(heading3); // dodaje element na KRAJ 
+
+toggleClassesDiv.prepend(heading3);
+
+
+const par = document.createElement('p');
+
+par.textContent = 'Testing paragraf.';
+
+toggleClassesDiv.lastElementChild.before(par);
+
+
+const spanEl = document.createElement('span');
+
+spanEl.textContent = ' (just a test span) ';
+
+toggleClassesDiv.firstElementChild.after(spanEl);
+
+
+
+// ! zamena za postojeci element
+
+const newPar = document.createElement('p');
+
+newPar.textContent = 'New test paragraf.';
+
+toggleClassesDiv.lastElementChild.replaceWith(newPar);
+
+
+
+
+
+// ! UKLANJANJE ELEMENATA
+
+// * 1. nacin --> REMOVE()
+
+// toggleClassesDiv.remove();
+
+
+// * 2. nacin
+
+// toggleClassesDiv.parentElement.removeChild(toggleClassesDiv);
+
+
+// TODO 20. cas DOMACI
+
+/** 
+ * 0. Zadatak od gore u TODO komentaru (za 2 button-a).
+ * 1. Kreirati NIZ osnovnih boja (crvena, zuta, plava) kao niz stringova.
+ * 2. U naslovu prompt prozora postaviti pitanje korisniku da unese JEDNU osnovnu boju.
+ * 3. Proveriti da li je ono sto je korisnik uneo tacan ili netacan odgovor (tj da li boja koju je uneo postoji u osnovnim bojama ili ne).
+ * 4. Ako je odgovor tacan, korisniku prikazati notifikacioni prozor da je odgovor tacan i prikazati mu osvojenu sumu od 4 cifre 
+ *    (nasumican broj, npr 4125 $).
+ * 5. U suprotnom, ako je korisnik odgovorio netacno, prikazati mu prozor da je odgovor netacan.
+ * 6. Notifikacione prozore stilizovati putem primene CSS klasa!
+ * 7. Obratiti paznju da radi sve kako treba i kad korisnik unese i velika i mala slova.
+*/
+
+// 0. 
+
+const btnHide = document.querySelector('.btn-hide');
+const btnShow = document.querySelector('.btn-show');
+
+let isHidden = false;
+
+btnHide.addEventListener('click', () => {
+    if(!isHidden) {
+        isHidden = true;
+        toggleClassesDiv.classList.add('not-visible');
+        toggleClassesDiv.classList.remove('visible');
+    }
+});
+
+btnShow.addEventListener('click', () => {
+    if(isHidden) {
+        isHidden = false;
+        toggleClassesDiv.classList.add('visible');
+        toggleClassesDiv.classList.remove('not-visible');
+    }
+});

@@ -74,7 +74,7 @@ completeOneBtn.textContent = 'Complete';
 
 completeOneBtn.addEventListener('click', () => {
     if(completeOneInput.value) {
-        const indexToComplete = (+completeOneInput.value)-1;
+        const indexToComplete = completeOneInput.value-1;
         const selectedTodo = todos[indexToComplete];
         selectedTodo.style.color = 'red';
         selectedTodo.innerHTML = `<del>${selectedTodo.textContent}</del>`;
@@ -96,7 +96,6 @@ const numbers = document.querySelectorAll('#list-of-numbers li');
 
 console.dir(numbers);
 
-let maxVal = numbers.length;
 let currentVal = 0;
 
 btnStartCompl.addEventListener('click', () => {

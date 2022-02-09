@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/app.js" defer></script>
-    <title>DOM Manipulation</title>
-</head>
-<body>
-    <header>
-        <h1 id="main-title">Welcome to our Programming School!</h1>
-    </header>
-    <h3 id="sub-title">Our Courses:</h3>
-    <ul class="my-courses-list">
-        <li>Java</li>
-        <li class="list-item">JavaScript</li>
-        <li class="list-item">Python</li>
-    </ul>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./assets/app.js" defer></script>
+        <title>DOM Manipulation</title>
+        <style>
+            .my-paragraph {
+                color: blue;
+            }
+            .my-paragraph-inactive {
+                color: red;
+            }
+            .visible {
+                display: block;
+            }
+            .not-visible {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 id="main-title">Welcome to our Programming School!</h1>
+        </header>
+        <h3 id="sub-title">Our Courses:</h3>
+        
+        <div class="js-list-wrapper">
+            <ul class="my-courses-list js-my-courses-list">
+                <li>Java</li>
+                <li class="list-item js-list-item">JavaScript</li>
+                <li class="list-item js-list-item">Python</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h1>20. cas</h1>
+
+        <h3>Toggling classes example:</h3>
+
+        <div class="js-toggle-classes-wrapper">
+            <p class="my-paragraph">First paragraph.</p>
+            <p class="my-paragraph">Second paragraph.</p>
+            <p class="my-paragraph">Third paragraph.</p>
+        </div>
+        <button class="btn-hide">
+            Hide div
+        </button>
+        <button class="btn-show">
+            Show div
+        </button>
+    </body>
 </html>
