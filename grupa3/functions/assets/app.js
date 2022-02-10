@@ -451,7 +451,7 @@ console.log(printNumbers('Testing', 12, false, 'World', 44, 55, true));
 const getTypeForEachArg = (...args) => {
     let arr = [];
     for(let val of args) {
-        arr.push(`Type of ${val} is ${typeof val}`);
+        arr.push(`Type of ${val} is ${typeof val}`); // Type of 1 is number. Type of 'Jupiter' is String, itd...
     }
     return arr;
 }
