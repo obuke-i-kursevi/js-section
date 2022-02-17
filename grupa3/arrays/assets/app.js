@@ -309,3 +309,297 @@ console.log(lastThreeArticles);
 const firstTwoArticles = lastThreeArticles.slice(0,2);
 
 console.log(firstTwoArticles);
+
+
+
+
+// ! 12. cas (17.02.2022.)
+
+console.log('---------------- 12. cas (17.02.2022.) -----------------');
+
+// ! CONCAT --> funkcija koja spaja elemente nizova
+
+const firstResults = [4,2,5,3,1];
+
+const secondResults = [4,4,5,3,2];
+
+const allResults = firstResults.concat(secondResults,articles);
+
+console.log('Concat function', allResults);
+
+
+
+
+
+
+// ! indexOf i lastIndexOf funkcije --> funkcije koje vracaju indekse elemenata
+
+let idx = firstResults.indexOf(5);
+
+console.log(`Index of number 5 in firstResults : ${idx}`);
+
+console.log(`SecondResults array -> index of number 4: ${secondResults.indexOf(4)}`); // vraca samo 0
+
+console.log(`index of number 66: ${firstResults.indexOf(66)}`); // -1
+
+console.log(`Last Index of 4: ${secondResults.lastIndexOf(4)}`); // 1
+
+
+// * u slucaju referentnih tipova indexOf i lastIndexOf ne funkcionisu
+
+const studenti = [
+    {
+        name: 'Marko',
+        lastName: 'Markovic',
+        age: 32,
+        courses: ['Java', 'JavaScript']
+    },
+    {
+        name: 'Sara',
+        lastName: 'Saric',
+        age: 33,
+        courses: ['Java', 'C#']
+    },
+    {
+        name: 'Petar',
+        lastName: 'Petrovic',
+        age: 35,
+        courses: ['Python', 'JavaScript']
+    }
+];
+
+console.log(studenti.indexOf({
+    name: 'Marko',
+    lastName: 'Markovic',
+    age: 32,
+    courses: ['Java', 'JavaScript']
+})); // -1
+
+
+
+
+
+// ! FIND i FINDINDEX funkcije
+
+// * FIND funkcija vraca PRVI element pronadjen na osnovu uslova pretrage
+
+// const marko = studenti.find((student) => {
+//     return student.name === 'Marko';
+// });
+
+const marko = studenti.find(student => student.name === 'Marko');
+
+console.log('FIND funkcija po imenu:', marko);
+
+const studentOf35 = studenti.find(student => student.age === 35);
+
+console.log('FIND funkcija po godinama studenta', studentOf35);
+
+
+// * FINDINDEX funkcija koja vraca indeks elementa koji trazimo na osnovu pretrage
+
+const idxOfSara = studenti.findIndex(student => student.name === 'Sara');
+
+console.log(`Idx of Sara: ${idxOfSara}`);
+
+studenti.splice(idxOfSara, 1);
+
+console.log(studenti);
+
+
+
+
+// ! INCLUDES funkcija --> proverava da li odredjeni element postoji u nizu
+
+
+console.log(numbers); // [1, 2.3, 4, 5.75, 12, 100]
+
+const isNum = numbers.includes(2.3);
+
+const odgovor = isNum 
+    ? `Postoji broj 2.3` 
+    : `Ne postoji 2.3`;
+
+console.log(odgovor);
+
+
+
+// * provera da li odredjeni element postoji u nizu na dva nacina:
+
+// * 1. includes
+
+// * 2. indexOf
+
+console.log(numbers.indexOf(100) !== -1); // true
+
+
+
+
+
+// ! FOREACH funkcija
+
+const myAccTransactions = [100,-30,200,40,-150];
+
+// * 1. nacin FOR OF
+
+for(let trans of myAccTransactions) {
+    console.log(`${trans} $`);
+}
+
+
+// * 2. nacin FOR petlja
+
+for(let i = 0; i < myAccTransactions.length; i++) {
+    console.log(`${myAccTransactions[i]} $`);
+}
+
+
+// * 3. nacin FOR EACH funkcija
+
+// myAccTransactions.forEach((transaction) => {
+//     console.log(`${transaction} $`);
+// });
+
+myAccTransactions.forEach(transaction => console.log(`${transaction} $`));
+
+
+
+
+// TODO npr hocemo da na svaku transakciju ukalkulisemo proviziju npr od 5 % i te transakcije sa provizijom dodamo u novi nizu
+
+let bankProvision = 0.05;
+const noviNiz = [];
+
+
+// myAccTransactions.forEach((transaction) => {
+//     const provisionOfTransaction = transaction * bankProvision;
+//     const transactionWithProvision = transaction + provisionOfTransaction;
+//     noviNiz.push(transactionWithProvision);
+// });
+
+// console.log('Transactions with provisions included: ', noviNiz);
+
+
+// * kraca varijanta prethodnog
+
+myAccTransactions.forEach(transaction => noviNiz.push(transaction * (1 + bankProvision)));
+
+console.log('Transactions with provisions included: ', noviNiz);
+
+
+
+// * ispisivanje transakcija sa provizijama i njihovim pozicijama
+
+noviNiz.forEach((transaction, idx) => {
+    console.log(`Transaction number ${++idx} = ${transaction} $`);
+});
+
+
+
+
+// TODO npr hocemo da za svaku transakciju zabelezimo njenu poziciju i iznos i to dodamo u novi niz
+
+const newArr = [];
+
+const testArr = [];
+
+noviNiz.forEach((transaction, idx) => {
+    // const ob = {
+    //     position: idx+1,
+    //     value: `${transaction} $`
+    // }
+    // newArr.push(ob);
+    // * kraci nacin pisanja
+    newArr.push({
+        position: idx+1,
+        value: `${transaction} $`
+    });
+});
+
+// * Jos kraci nacin pisanja koda:
+noviNiz.forEach((transaction, idx) => testArr.push({
+    position: idx+1,
+    value: `${transaction} $`
+}));
+
+console.log(testArr);
+
+
+
+
+// TODO 12. cas DOMACI:
+
+/**
+ *  1. Kreirati poseban niz koji je spoj poslednja dva niza dobijena (iz 5. i 6. zadatka)
+ *  2. U nizu artikala, pronaci artikl koji se naziva 'Yogurt' i smestiti ga u varijablu 'yogurt'
+ *  3. Pronaci indeks artikla koji ima cenu 30
+ *  4. Nad svakim artiklom dodeliti novi property 'formatedPrice' koji ce sadrzati prefiks '$' i cenu tog artikla
+ *  5. Kreirati novi niz koji ce sadrzati sve cene svakog artikla.
+ *  6. Proveriti da li se u novom nizu svih cena nalazi ijedna cena koja iznosi 7 i ispisati odgovor u formatu 'cena 7 postoji' ili 'cena 7 ne postoji'
+ *  7. Za svaku cenu obracunati dodatan PDV (npr. od 8 %) i dodati ga na postojecu cenu i za svaku cenu dodati njen redni broj u nizu
+*/
+
+
+// 1.
+
+const concatedArticles = lastThreeArticles.concat(firstTwoArticles);
+
+console.log('Concated articles', concatedArticles);
+
+
+// 2.
+
+const yogurt = articles.find(article => article.name === 'Yogurt');
+
+console.log('Yogurt', yogurt);
+
+
+// 3.
+
+const ofPrice30 = articles.findIndex(article => article.price === 30);
+
+console.log('Off price 30', ofPrice30);
+
+articles.splice(ofPrice30, 1);
+
+console.log(articles);
+
+
+// 4.
+
+articles.forEach(article => article.formattedPrice = `$ ${article.price}`);
+
+console.log(articles);
+
+
+
+// 5.
+
+const allPrices = [];
+articles.forEach(article => allPrices.push(article.price));
+
+console.log(allPrices);
+
+
+// 6.
+
+const isPrice7 = allPrices.includes(7) ? 'cena 7 postoji' : 'cena 7 ne postoji';
+
+console.log(isPrice7);
+
+
+// 7.
+
+const pricesWithPDV = [];
+
+allPrices.forEach((price, idx) => {
+    const priceObj = {
+        number: idx+1,
+        price: price * (1+0.08)
+    }
+    pricesWithPDV.push(priceObj);
+})
+
+console.log(pricesWithPDV);
+
+
