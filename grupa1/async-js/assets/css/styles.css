@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+/* font-family: 'Playfair Display', serif; */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #cedfe2;
+}
+
+.weather-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 60%;
+    background: linear-gradient(#4ca1af, #c4e0e5);
+    border: 3px solid black;
+    box-shadow: 3px 3px 3px 4px gray;
+}
+
+.weather-data-wrapper__main-title,
+.weather-data-wrapper__sub-title,
+.weather-data-wrapper__forecast-temp,
+.weather-data-wrapper__forecast-desc,
+.weather-data-wrapper__forecast-location {
+    font-family: 'Playfair Display', serif; 
+    text-align: center;
+}
+
+.weather-data-wrapper__location-input {
+    height: 40px;
+    padding: 10px;
+    width: 200px;
+    border: 3px solid #125862;
+}
+
+.weather-data-wrapper__weather-image {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.weather-data-wrapper__submit-button {
+    width: 100px;
+    padding: 10px 20px;
+    background: #cedfe2;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif; 
+}
+
+@media (min-width: 420px) {
+    .weather-data-wrapper__submit-button {
+        display: none;
+    }
+}
+
+
+
+

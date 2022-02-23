@@ -211,7 +211,9 @@ const getItemDescription = (item) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
-                itemDescription: 'Smart Phone by Samsung Company'
+                itemDescription: 'Smart Phone by Samsung Company',
+                color: 'red',
+                dualSim: true
             })
             reject(new Error('Error while fetching description'))
         }, 500);

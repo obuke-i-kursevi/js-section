@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/practice.js" defer></script>
+    <script src="./assets/js/app.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <!-- <script src="./assets/js/practice.js" defer></script> -->
     <title>Async JS explanation with examples</title>
 </head>
 <body>
-    <h1>Async JS</h1>
+    <div class="weather-data-wrapper">
+        <h1 class="weather-data-wrapper__main-title">Welcome to Weather Forecast</h1>
+        <h2 class="weather-data-wrapper__sub-title">Please enter location name:</h2>
+        <input type="text" class="weather-data-wrapper__location-input">
+        <button class="weather-data-wrapper__submit-button">Get Forecast</button>
+        <img src="./assets/images/weather.png" alt="weather-icon" class="weather-data-wrapper__weather-image">
+        <h2 class="weather-data-wrapper__forecast-temp"></h2>
+        <h4 class="weather-data-wrapper__forecast-desc"></h4>
+        <h5 class="weather-data-wrapper__forecast-location"></h5>
+    </div>
 </body>
 </html>
