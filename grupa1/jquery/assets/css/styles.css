@@ -34,7 +34,7 @@ header {
 }
 
 .orange-background {
-    background: #dd3300;
+    background: #e9c4b9;
 }
 
 .regular-font {
@@ -43,7 +43,40 @@ header {
 }
 
 .btn {
-    border: 2px solid red;
+    border: 2px solid rgb(221, 182, 182);
     width: 100px;
     height: 50px;
+}
+
+
+
+/* 24. cas domaci */
+
+.cv-wrapper {
+    padding-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cv-image {
+    width: 400px;
+    height: 300px;
+    border: 2px solid black;
+}
+
+.cv-about-me {
+    width: 60%;
+    text-align: center;
+}
+
+.highlighted {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: monospace;
+    color:rgb(175, 108, 175);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }

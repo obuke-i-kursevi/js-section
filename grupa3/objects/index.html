@@ -4,11 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assets/js/pratice.js" defer></script>
-    <!-- <link rel="stylesheet" href=""> -->
+    <!-- <script src="./assets/js/pratice.js" defer></script> -->
+    <script src="./assets/js/vendor.js" defer></script>
+    <script src="./assets/js/app.js" defer></script>
+    <link rel="stylesheet" href="./assets/scss/styles.css">
     <title>Objects (Library App)</title>
 </head>
 <body>
-    <h1>Objects</h1>
+    <h1 class="library-main-title">Welcome to our Library</h1>
+    <div class="see-all-wrapper">
+        <button id="see-all-btn">
+            See all our books
+        </button>
+    </div>
+    <div class="actions-wrapper">
+        <div class="search-book-wrapper">
+            <h3 class="wrapper-subtitle">Search for book:</h3>
+            <input type="text" id="search-book-input" placeholder="Enter book's name">
+            <button id="search-book-btn">
+                Search
+            </button>
+        </div>
+        <div class="add-book-wrapper">
+            <h2 class="add-book-title">Add new book:</h2>
+            <h3 class="book-info-title">Book's name:</h3>
+            <input type="text" placeholder="Enter book's name" id="book-name-input">
+            <h3 class="book-info-title">Book's writter:</h3>
+            <input type="text" id="book-writter-input" placeholder="Enter book's writter">
+            <h3 class="book-info-title">Additional Attribute Name:</h3>
+            <input type="text" id="additional-attribute-name-input" placeholder="Enter additional attribute name:">
+            <h3 class="book-info-title">Additional Attribute Value:</h3>
+            <input id="additional-attribute-value-input" placeholder="Enter additional attribute value:" type="text">
+            <button id="add-book-btn">
+                Add
+            </button>
+        </div>
+        <div class="delete-book-wrapper">
+            <h3 class="wrapper-subtitle">Delete book:</h3>
+            <input type="text" placeholder="Enter book's name:" id="book-delete-input">
+            <button id="delete-book-btn">
+                Delete
+            </button>
+        </div>
+    </div>
 </body>
 </html>

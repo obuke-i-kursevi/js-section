@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+/* font-family: 'Source Sans Pro', sans-serif; */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../images/library.jpg");
+  background-position: center;
+}
+
+.actions-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+}
+
+.see-all-wrapper {
+  text-align: center;
+}
+
+.library-main-title {
+  margin-top: 50px;
+  text-align: center;
+  text-shadow: 4px 4px 5px white;
+  font-weight: bolder;
+  font-size: 40px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: purple;
+}
+
+.search-book-wrapper,
+.add-book-wrapper,
+.delete-book-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper-subtitle,
+.add-book-title {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.wrapper-subtitle,
+.add-book-title,
+.book-info-title {
+  color: #901c90;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 27px;
+  text-shadow: 3px 3px 4px white;
+}
+
+#search-book-input,
+#book-name-input,
+#book-writter-input,
+#additional-attribute-name-input,
+#additional-attribute-value-input,
+#book-delete-input {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  color: purple;
+  padding: 15px;
+  width: 300px;
+  text-align: center;
+}
+
+#see-all-btn,
+#search-book-btn,
+#add-book-btn,
+#delete-book-btn {
+  margin-top: 20px;
+  width: 200px;
+  background-color: #efd9f3;
+  padding: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  color: purple;
+}
+
+#see-all-btn {
+  background: #efd9f3;
+}
+
+#search-book-btn {
+  background: #e9bde9;
+}
+
+#add-book-btn {
+  background: #bfdbbf;
+}
+
+#delete-book-btn {
+  background: #ebcccc;
+}
+/*# sourceMappingURL=styles.css.map */
