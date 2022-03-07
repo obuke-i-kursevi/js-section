@@ -58,3 +58,8 @@ header {
 .block-display {
     display: block;
 }
+
+.add-post-form {
+    border: 3px solid gray;
+    padding: 15px;
+}

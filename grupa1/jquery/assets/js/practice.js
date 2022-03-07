@@ -290,6 +290,10 @@ $(document).ready(function() {
         $('.js-items-list').append(itemToAdd);
     });
 
+    // items.forEach((item, idx) => {
+    //     const itemToAdd = '<li>' + item + '</li>';
+    //     $('.js-items-list').append(itemToAdd);
+    // });
 
     const contentArr = $('.js-content-list li').toArray();
 

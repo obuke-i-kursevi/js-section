@@ -80,3 +80,9 @@ header {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
+
+.add-post-form {
+    border: 3px solid lightgreen;
+    padding: 15px;
+}
