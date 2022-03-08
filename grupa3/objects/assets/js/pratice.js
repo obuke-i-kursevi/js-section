@@ -144,3 +144,220 @@ console.log(exampleString2);
 let newObj = JSON.parse(exampleString2);
 
 console.log(newObj);
+
+
+
+
+// ! 17. cas (08.03.2022.)
+
+console.log('--------------- 17. cas (08.03.2022) ---------------');
+
+const car = {
+    name: 'Audi A6',
+    gasTypes: ['diesel', 'gas'],
+    gears: 6
+}
+
+const newCar = car;
+
+// console.log(car);
+// console.log(newCar);
+
+newCar.gears = 5; // ! ovo je samo prosledjivanje reference jedne u drugu varijablu (oba pokazivaca gadjaju isti objekat u memoriji)
+
+// console.log(car);
+// console.log(newCar);
+
+// * Spread operator se moze koristiti za kopiranje objekata (SHALLOW kopija)
+
+const newCar2 = {...car};
+
+// console.log(car);
+// console.log(newCar2);
+
+newCar2.name = 'BMW 5';
+
+// console.log(car);
+// console.log(newCar2);
+
+newCar2.gasTypes.push('benzin');
+
+// console.log(car);
+// console.log(newCar2);
+
+// * Kreiranje DEEP kopije (duboke kopije -> tj kopije koja kopira posebno i primitivne i referentne tipove podataka)
+
+const newCar3 = {
+    ...car,
+    gasTypes: [...car.gasTypes]
+};
+
+// console.log(car);
+// console.log(newCar3);
+
+newCar3.gasTypes.push('eletric power');
+
+console.log(car);
+console.log(newCar3);
+
+
+
+
+// * Kreiranje kopije uz Object.assign()
+
+const newCar4 = Object.assign({}, car); // Pravi Shallow kopiju
+
+const gasTypes = Object.assign([], car.gasTypes);
+
+console.log(gasTypes);
+
+
+
+
+// ! Object Desctructing
+
+const book = {
+    id: Math.ceil(Math.random() * 100),
+    name: 'Harry Potter',
+    writter: 'J.K. Rowling',
+    editions: [1,2,3],
+    pages: 550
+}
+
+
+// * 1. slucaj
+
+const {editions} = book;
+
+console.log(`Harry Potter has editions: ${editions}`);
+
+
+// * 2. slucaj
+
+const {id, name} = book;
+
+console.log(`Book ${name} has ID: ${id}`);
+
+
+// * 3. slucaj
+
+const {pages, ...otherProps} = book;
+
+console.log(pages);
+
+console.log(otherProps);
+
+
+
+// * Re-assign naziva dobijenog property-a
+
+// pages --> numberOfPages
+
+book.numberOfPages = book.pages;
+delete book.pages;
+
+console.log(book);
+
+
+
+// * Proveravanje da li odredjeni property postoji u nekom objektu
+
+// * 1. nacin -> Uz IN kljucnu rec
+
+if ('numberOfPages' in book) {
+    console.log(`Property numberOfPages exists in book object!`);
+}
+
+// publisher
+
+if(!('publisher' in book)) {
+    book.publisher = 'Vulkan DOO';
+}
+
+console.log(book);
+
+
+// * 2. nacin -> uz proveru da li je nesto undefined
+
+console.log(book.available); // undefined
+
+if(book.available === undefined) {
+    book.available = true;
+} else {
+    book.available = false;
+}
+
+console.log(book); // available = true
+
+
+
+
+// ! THIS referenca
+
+// * 1. korak ka THIS referenci
+
+const song = {
+    title: 'Best of you',
+    artist: 'Foo Fighters',
+    play: function() {
+        console.log(`Best of you by Foo Fighters is now playing!`);
+    }
+}
+
+song.play();
+
+
+// * 2. korak ka THIS referenci
+
+const song1 = {
+    title: 'Best of you',
+    artist: 'Foo Fighters',
+    play: function() {
+        console.log(`${title} by ${artist} is now playing!`);
+    }
+}
+
+// song1.play(); // ! title is not defined
+
+
+// * 3. korak ka THIS referenci --> Referenca THIS ukazuje na objekat koji odredjenu metodu poziva
+
+const song2 = {
+    title: 'Best of you',
+    artist: 'Foo Fighters',
+    play() {
+        console.log(`${this.title} by ${this.artist} is now playing!`);
+    }
+}
+
+song2.play(); // * Best of you by Foo Fighters is now playing!
+
+song2.pause = function() {
+    console.log(`${this.title} of ${this.artist} has been paused!`);
+}
+
+song2.pause(); // * Best of you of Foo Fighters has been paused!
+
+
+// * PRIMER:
+
+const album = {
+    artist: 'AC/DC',
+    name: 'High Voltage',
+    songs: ['High Voltage', 'Are you ready?', 'Thunderstruck']
+}
+
+album.listSongs = function() {
+    this.songs.forEach((song, idx) => {
+        console.log(`Song ${++idx} : ${song}`);
+    });
+};
+
+album.listSongs();
+
+
+
+
+// ! 18. cas (10.03.2022.)
+
+console.log('----------- 18. cas (10.03.2022.) -------------')
