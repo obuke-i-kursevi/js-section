@@ -1,0 +1,83 @@
+<!-- TODO 19. cas DOMACI (podsetnik: odvojen je HTML i JS u 19cas.html i 19cas-homework.js fajlove): 
+
+/**
+ * 1. Kreirati <ol> u HTML-u (u novom fajlu 19cas.html) sa nekom TODO listom i novi JS fajl (19cas-homework.js) u koji cete dodati sav JS kod.
+ *    Primer TODO liste:
+ *  
+ *      1. Go to the Market
+ *      2. Do the Homework
+ *      3. Clean the house
+ *      4. Go to the Gym
+ * 
+ * 2. Dobaviti sve TODO item-e iz liste.
+ * 
+ * 3. Kreirati jedan <button> u HTML-u, tekst <button> elementa postaviti nad 'Complete All' kroz JavaScript. 
+*       Takodje, kreirati jedan <h1> element sa tekstom npr:
+ *     'Things to do on date: + nalepiti danasnji datum (izvuci iz klase Date).' Na primer: Things to do on date: dan.mesec.godina (npr 01.03.2022.)
+ * 
+ * 4. Kada se 'Complete All' dugme klikne treba da postavlja zelenu boju teksta nad svakim TODO zadatkom 
+ *    i preskraba ih striketrough linijom.
+ * 
+ * 5. Takodje, na klik dugmeta i naslov <h1> promeniti u 'Completed things' i ofarbati u zeljenu boju.
+ * 
+ * 6. Napraviti <input> polje u koje se unese pozicija (ne indeks) <li>-a koji zelite da preskrabate i ofarbate crvenom bojom.
+ * 
+ * 7. Testirati tako sto pored <input> polja napravite novi <button> ciji ce tekst biti 'Complete' i koji ce na klik da formatira u crvenu boju
+ *    tekst i striketrough liniju samo za item cija je pozicija uneta u <input> polje. Ako je input prazan a dugme kliknuto obavestiti korisnika
+ *    da prvo mora uneti nesto u input polje (alert box-om).
+ * 
+ * 8. Napraviti novu <ul> sa random elementima koje zelite (npr brojevi 1,2,3,4,5,6,7,8,9,10). 
+ * 
+ * 9. Napraviti novi <button> koji kada se klikne na svaki sekund preskraba jedan <item> iz <ul>, ofarba ga narandzastom bojom i bolduje. 
+ *    (podsetiti se/istraziti setInterval() funkciju)
+
+ * 10. Kada odradi sta treba sa poslednjim <li> obavestiti korisnika da je dosao do kraja liste i prekinuti izvrsavanje 
+ *     funkcije (hint: istraziti clearInterval() funkciju).
+ * 
+ */ 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./assets/js/19cas-homework.js" defer></script>
+        <title>19. cas homework</title>
+    </head>
+    <body>
+        <h1 class="main-title"></h1>
+        <ol>
+            <li>Go to the gym.</li>
+            <li>Go to the market.</li>
+            <li>Clean the house.</li>
+            <li>Do the Homework.</li>
+        </ol>
+        <button id="btn-complete-all"></button>
+
+        <br>
+        <br>
+
+        <input id="complete-one-input" type="number">
+        <button id="btn-complete-one"></button>
+
+        <hr>
+
+        <h3>List of numbers:</h3>
+        <ul id="list-of-numbers">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+
+        <button id="btn-start-completing"></button>
+    </body>
+</html>

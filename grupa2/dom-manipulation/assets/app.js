@@ -1,5 +1,18 @@
 // ! 19.cas (07.02.2022.)
 
+
+/**
+ * U momentu kada se web stranica ucita, browser kreira DOM (Document Object Model) za tu stranicu.
+ * HTML DOM je zapravo tree struktura (struktura stabla) : 
+ * 
+ * 
+ *  https://www.w3schools.com/whatis/img_htmltree.gif
+ * 
+ * 
+ * To znaci da svakom DOM elementu mozemo pristupiti ponaosob i manipulisati njime.
+ * 
+ */
+
 console.log('------------- 19. cas (07.02.2022.) ---------------');
 
 console.dir(document);
