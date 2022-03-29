@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./assets/js/app.js" defer></script>
     <title>DOM Manipulation</title>
+    <style>
+        .my-paragraph {
+            color: blue;
+        }
+        .my-paragraph-inactive {
+            color: red;
+        }
+        .visible {
+            display: block;
+        }
+        .not-visible {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,10 +29,22 @@
     <div class="list-wrapper js-list-wrapper">
         <ul class="my-courses-list js-my-courses-list">
             <li>Java</li>
-            <li class="list-item">Pythob</li>
+            <li class="list-item">Python</li>
             <li class="list-item">JavaScript</li>
         </ul>
     </div>
     <hr>
+    <h3>Toggling classes example</h3>
+    <div class="toggle-classes-wrapper js-toggle-classes-wrapper">
+        <p class="my-paragraph">First p</p>
+        <p class="my-paragraph">Second p</p>
+        <p class="my-paragraph">Third p</p>
+    </div>
+    <button class="js-btn-hide">
+        Hide div
+    </button>
+    <button class="js-btn-show">
+        Show div
+    </button>
 </body>
 </html>
