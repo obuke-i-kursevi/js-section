@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+// font-family: 'Playfair Display', serif;
+
+$lightColor: rgb(194, 231, 241);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $lightColor;
+}
+
+.weather-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 100px;
+    background: linear-gradient(darken($lightColor, 15%), lighten($lightColor, 10%));
+    border: 3px solid black;
+    width: 60%;
+    box-shadow: 3px 3px 3px 4px rgb(199, 199, 199);
+}
+
+.weather-data-wrapper__main-title,
+.weather-data-wrapper__sub-title,
+.weather-data-wrapper__forecast-temp,
+.weather-data-wrapper__forecast-desc,
+.weather-data-wrapper__forecast-location,
+.weather-data-wrapper__submit-button {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+
+.weather-data-wrapper__location-input {
+    height: 40px;
+    width: 40px*5;
+    padding: 10px;
+    border: 3px solid darken($lightColor, 35%);
+}
+
+.weather-data-wrapper__weather-image {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.weather-data-wrapper__submit-button {
+    width: 80px;
+    padding: 10px 20px;
+    background: lighten($lightColor, 20%);
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    @media (min-width: 420px) {
+        display: none;
+    }
+}
