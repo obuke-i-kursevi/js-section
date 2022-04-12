@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: rgb(224, 201, 192);
+    color: black;
+    text-align: center;
+    padding: 15px;
+}
+
+.main-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.main-wrapper__title,
+.main-wrapper__text {
+    text-align: center;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.display-none {
+    display: none;
+}
+
+.bolded-text {
+    font-weight: bold;
+}
+
+.coral-background {
+    background: coral;
+}
+
+.regular-font {
+    text-decoration: none;
+    color: black;
+}
+
+.btn,
+.input[type="button"],
+.input[type="submit"] {
+    width: 150px;
+    height: 50px;
+    margin-bottom: 20px;
+    background: coral;
+    color: black;
+    font-size: 17px;
+}
+
+/* 24. cas domaci */
+
+.cv-wrapper {
+    padding-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cv-image {
+    width: 400px;
+    height: 300px;
+    border: 2px solid black;
+}
+
+.cv-about-me {
+    width: 60%;
+    text-align: center;
+}
+
+.highlighted {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: monospace;
+    color:rgb(175, 108, 175);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.add-post-form {
+    border: 1px solid black;
+    padding: 20px;
+}
