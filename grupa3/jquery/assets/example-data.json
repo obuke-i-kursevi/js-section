@@ -1,0 +1,20 @@
+[
+    {
+        "articleId": 1,
+        "name": "Samsung Galaxy S20",
+        "color": "black",
+        "storage": 128
+    },
+    {
+        "articleId": 2,
+        "name": "Iphone X",
+        "color": "blue",
+        "storage": 256
+    },
+    {
+        "articleId": 3,
+        "name": "Huawei P20",
+        "color": "gray",
+        "storage": 64
+    }
+]
